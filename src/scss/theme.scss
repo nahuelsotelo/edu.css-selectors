@@ -1,0 +1,13 @@
+/* --------------------------------------------------------------------------------
+   *** THEME ***
+-------------------------------------------------------------------------------- */
+// Default theme
+@import 'theme/source/beige';
+@import 'theme/custom';
+
+// Syntax highlighting
+@import 'extras/zenburn';
+
+[class^=culo-] {
+  outline: 1px solid red;
+}

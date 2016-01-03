@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Selectores CSS | Escuela IT - Herramientas Frontend</title>
+
+    <meta name="description" content="Escuela IT - Herramientas Frontend">
+    <meta name="author" content="Nahuel Sotelo">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme.css" id="theme">
+
+    <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+    <script>
+        if( window.location.search.match( /print-pdf/gi ) ) {
+            var link = document.createElement( 'link' );
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = 'css/print/pdf.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( link );
+        }
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+</head>
+
+
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <section>
+        <h1 style="font-size: 7rem; margin-bottom: 1rem;"><strong>Optimización de imágenes</strong></h1>
+        <div><small style="border-top: 1px dotted rgba(0,0,0,.6); display: inline-block; padding: 1.5rem 6rem 0;"><i>por</i> <a href="http://nahuelsotelo.com">Nahuel Sotelo</a></small></div>
+      </section>
+
+      <section>
+  <p style="font-size: 1.5em; text-align: center;">Hola, soy <strong>Nahuel Sotelo</strong></p>
+  <p style="text-align: center;">Frontend developer en <a href="http://www.schibsted.es/">Schibsted Spain</a> y Profesor de la asignatura Programación Frontend en el Master de <a href="http://www.baued.es/es/estudios/masters-y-posgrados/master-en-diseno-web">Diseño Web de Bau</a>.</p>
+
+  <ul class="social">
+    <li><a href="https://github.com/nahuelsotelo" class="is--github">nahuelsotelo</a></li>
+    <li><a href="https://es.linkedin.com/in/nahuelsotelo" class="is--linkedin">Nahuel Sotelo</a></li>
+    <li><a href="https://twitter.com/nahuelsotelo" class="is--twitter">@nahuelsotelo</a></li>
+  </ul>
+</section>
+
+<section>
+  <h2>Contenidos</h2>
+  <ol>
+    <li>Introducción</li>
+  </ol>
+</section>
+
+<section>
+  <section>
+    <h1>El coste de las imágenes</h1>
+  </section>
+
+  <section>
+    <blockquote style="width: 75%;">
+      <p style="font-size: 3rem;">“A picture is worth a thousand words, but its cost can be so much greater.”</p>
+      <footer>- <cite><a href="http://www.fivesimplesteps.com/products/practical-responsive-images">"Practical responsive images"</a>, Ben Seymour</cite></footer>
+    </blockquote>
+  </section>
+
+  <section>
+    <p>Las imágenes son el recurso que más añade al peso total de la página.</p>
+    <figure>
+      <img src="img/chart-content.png" alt="" style="height: 24rem;">
+      <figcaption><a href="http://httparchive.org/interesting.php#bytesperpage">Average Bytes per Page by Content Type</a></figcaption>
+    </figure>
+  </section>
+
+  <section>
+    <p>En móvil la proporción se mantiene.</p>
+    <figure>
+      <img src="img/chart-content-mobile.png" alt="" style="height: 24rem;">
+      <figcaption><a href="http://mobile.httparchive.org/interesting.php#bytesperpage">Average Bytes per Page by Content Type</a></figcaption>
+    </figure>
+  </section>
+
+  <section>
+    <p>En móvil, el alto peso de las imágenes descargadas no sólo afecta la experiencia de usuario sino que puede tener un alto coste para su bolsillo dependiendo las condiciones de su plan de datos.</p>
+    <p>Un ejemplo: <a href="https://mobiforge.com/research-analysis/performance-money-part-1-end-users-wallet">Performance is money, part 1: the end-user's wallet</a></p>
+  </section>
+
+  <section>
+    <h2>Enlaces relacionados:</h2>
+    <ul class="related-links">
+      <li>
+        <a href="http://www.webperformancetoday.com/2014/12/02/page-bloat-update-average-top-1000-web-page-1795-kb-size/">“Page bloat update: The average top 1000 web page is 1795 KB in size”</a> <i>&#8213; Tammy Everts</i>
+      </li>
+      <li>
+        <a href="https://vimeo.com/108328247">“Design decisions through the lens of a performance budget”</a> <i>&#8213; Yesenia Perez-Cruz</i>
+      </li>
+      <li>
+        <a href="http://danielmall.com/articles/how-to-make-a-performance-budget/">“How to make a performance budget”</a> <i>&#8213; Dan Mall</i>
+      </li>
+  </section>
+</section>
+
+
+<section>
+  <section>
+    <h1>Bitmap</h1>
+  </section>
+  <section>
+    <h2>Enlaces relacionados:</h2>
+    <ul class="related-links">
+      <li>
+        <a href="https://www.youtube.com/watch?v=k4Xkpawt1EU">“Image Compression: Putting your Images on a Diet”</a> <i>&#8213; Guy Podjarny</i>
+      </li>
+
+      <li>
+        <a href="https://vimeo.com/136324133">“The story behind lossy PNG compression”</a> <i>&#8213; Kernel Lesiński</i>
+      </li>
+
+      <li>
+        <a href="http://www.smashingmagazine.com/2009/07/clever-png-optimization-techniques/">“Clever PNG Optimization Techniques”</a> <i>&#8213; Sergey Chikuyonok</i>
+      </li>
+
+      <li>
+        <a href="http://www.smashingmagazine.com/2009/07/clever-jpeg-optimization-techniques/">“Clever JPEG Optimization Techniques”</a> <i>&#8213; Sergey Chikuyonok</i>
+      </li>
+
+      <li>
+        <a href="http://optipng.sourceforge.net/pngtech/optipng.html">“A guide to PNG optimization”</a>
+      </li>
+  </section>
+</section>
+
+
+<section>
+  <h2 style="text-align: center;">¡Gracias!</strong></h2>
+  <p style="text-align: center;">Preguntas, dudas, comentarios a <a href="mailto:hola@nahuelsotelo.com" style="display: block;">hola@nahuelsotelo.com</a></p>
+
+  <ul class="social">
+    <li><a href="https://github.com/nahuelsotelo" class="is--github">nahuelsotelo</a></li>
+    <li><a href="https://es.linkedin.com/in/nahuelsotelo" class="is--linkedin">Nahuel Sotelo</a></li>
+    <li><a href="https://twitter.com/nahuelsotelo" class="is--twitter">@nahuelsotelo</a></li>
+  </ul>
+</section>
+
+
+    </div>
+  </div>
+
+  <script src="js/reveal/head.min.js"></script>
+<script src="js/reveal/reveal.js"></script>
+
+<script>
+  // Full list of configuration options available here:
+  // https://github.com/hakimel/reveal.js#configuration
+  Reveal.initialize({
+    controls: true,
+    progress: true,
+    history: true,
+    center: true,
+
+    theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+    transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/fade/none
+
+    // Parallax scrolling
+    // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+    // parallaxBackgroundSize: '2100px 900px',
+
+    // Optional libraries used to extend on reveal.js
+    dependencies: [
+    { src: 'js/reveal/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+    { src: 'js/reveal/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+    { src: 'js/reveal/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+    { src: 'js/reveal/notes/notes.js', async: true }
+    ]
+  });
+</script>
+
+
+</body>
+</html>
