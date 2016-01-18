@@ -38,7 +38,8 @@
   <div class="reveal">
     <div class="slides">
       <section>
-        <h1 style="font-size: 7rem; margin-bottom: 1rem;"><strong>Optimización de imágenes</strong></h1>
+        <h1 style="font-size: 7rem; margin-bottom: 1rem;">Introducción al CSS <span>Box Model - Selectores - Pseudo Elementos</span></h1>
+        <h2></h2>
         <div><small style="border-top: 1px dotted rgba(0,0,0,.6); display: inline-block; padding: 1.5rem 6rem 0;"><i>por</i> <a href="http://nahuelsotelo.com">Nahuel Sotelo</a></small></div>
       </section>
 
@@ -61,83 +62,1084 @@
 </section>
 
 <section>
+    <h1>Box-model <span>y sus propiedades</span></h1>
+</section>
+<section id="box-model" class="fz-s">
+    <section>
+        <h2>Box model</h2>
+    </section>
+
+    <section>
+        <p>Todos los elementos en una página web son cajas rectangulares.</p>
+        <p>Las características de estas cajas podemos describirlas a través del <em>box-model</em>.</p>
+    </section>
+
+    <section>
+        <p>Hay varias propiedades CSS que controlan las dimensiones de cada elemento:</p>
+        <ul>
+            <li><em><code>width</code></em> y <em><code>height</code></em>, que definen las dimensiones del elemento (aunque, como se aplican exactamente, dependerá de la propiedad <code>display</code>)</li>
+            <li><em><code>padding</code></em>, que determina el espacio entre el contenido y el borde exterior.</li>
+            <li>El mismo <em><code>border</code></em> de la caja.</li>
+            <li><em><code>margin</code></em>, el espacio que separa el elemento del resto de elementos.</li>
+        </ul>
+    </section>
+
+    <section>
+        <div class="BoxModelGraphic-margin">
+            <div class="BoxModelGraphic-padding">
+                <span class="BoxModelGraphic-content" contenteditable>contenido</span>
+            </div>
+        </div>
+        <p class="BoxModelGraphic-legend ta-c fz-xxs"><span class="c-purple">Area de contenido</span> | <span class="c-yellow">Padding</span> | <span class="c-red">Border</span> | <span class="c-cyan">Margin</span></p>
+        <hr>
+<pre><code data-trim contenteditable>
+.box {
+    width: 300px;
+    height: 50px;
+    border: 5px solid #d8cd00;
+    margin: 50px;
+    padding: 50px;
+}
+</code></pre>
+    </section>
+
+    <section>
+        <p>Por defecto <strong>el navegador añade los paddings y los bordes a las dimensiones del elemento</strong></p>
+        
+        <div class="BoxModelGraphic-padding">
+            <span  class="BoxModelGraphic-content" contenteditable>contenido</span>
+        </div>
+        <p class="BoxModelGraphic-legend ta-c fz-xxs"><span class="c-purple">300px</span> + <span class="c-yellow">50px * 2</span> + <span class="c-red">5px * 2</span> = <span class="fz-xs">410px</span></p>
+        <hr>
+<pre><code data-trim contenteditable>
+.box {
+    width: 300px;
+    height: 50px;
+    border: 5px solid #d8cd00;
+    margin: 50px;
+    padding: 50px;
+}
+</code></pre>
+    </section>
+
+    <section>
+        <h3>Box-sizing</h3>
+        <p><code>box-sizing</code> tiene 3 valores posibles:</p>
+        <ul>
+            <li><em><code>content-box</code></em>: el que se aplica por defecto y calcula el <code>width</code> y <code>height</code> teniendo en cuenta únicamente el contenido.</li>
+            <li><em><code>padding-box</code></em>: Incluye el <code>padding</code> dentro de las dimensiones del elemento.</li>
+            <li><em><code>border-box</code></em>: Incluye <code>padding</code> y <code>border</code> dentro de las dimensiones.</li>
+        </ul>
+    </section>
+    
+    <section>
+        <p>Es una buena idea, sobre todo si trabajamos con una layout flexible (en porcentajes) declarar <em><code>box-sizing: border-box</code></em> para todos los elementos usando el selector universal (<code>*</code>).</p>
+<pre><code data-trim contenteditable>*,
+*:before,
+*:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+</code></pre>
+        <p class="fz-xs ta-c"><a href="https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/">“Inheriting box-sizing Probably Slightly Better Best-Practice”</a> - Chris Coyier</p>
+    </section>
+</section>
+<section id="width-and-height">
+    <section>
+        <h2>Width y height</h2>
+    </section>
+
+    <section>
+        <p><em><code>width</code></em> y <em><code>height</code></em> son las propiedades que determinan el <em>ancho</em> y <em>alto</em>, respectivamente, del area de contenido de un elemento html.</p>
+    </section>
+
+    <section>
+        <p><strong>Por defecto su valor es <code>auto</code></strong>, es decir que se asignaran automaticamente dependiendo de si el elemento es inline o block.</p>
+        <ul>
+            <li>Si es <code>inline</code>, el <code>width</code> será tan largo como el contenido.</li>
+            <li>Si es <code>block</code>, ocupará el 100% de su contenedor.</li>
+        </ul>
+
+        <div style="border: 2px dotted hsla(0,0%,60%,.8); margin: 3rem auto 0; width: 80%;">
+            <h4 class="ta-l u-highlighted" style="text-transform: none;">Lorem ipsum dolor sit</h4>
+            <p class="u-highlighted fz-xs">Lorem ipsum dolor sit amet, <strong class="u-highlighted">consectetur adipisicing</strong> elit. Alias, esse ut voluptates cumque dolore vitae similique harum, ratione est voluptas reiciendis perspiciatis accusantium sed, <a href="#" class="u-highlighted" style="color: blue; text-decoration: underline;" >libero iure expedita</a> minima labore magnam.</p>
+        </div>
+    </section>
+
+    <section>
+        <p>El <code>height</code> por su parte, dependerá del alto del contenido, por lo que, si se trata de texto <strong>estará ligado al <code>line-height</code></strong> del mismo.</p>
+
+        <div style="margin: 3rem auto 0; width: 80%;">
+            <p class="u-highlighted fz-xs">Lorem ipsum dolor sit amet,consectetur adipisicing elit.</p>
+        </div>
+
+        <div style="margin: 3rem auto 0; width: 80%;">
+            <p class="u-highlighted fz-xs">Lorem ipsum dolor sit amet,consectetur adipisicing elit. Alias, esse ut voluptates cumque dolore vitae similique harum, ratione est voluptas reiciendis perspiciatis accusantium sed, libero iure expedita minima labore magnam.</p>
+        </div>
+    </section>
+</section>
+<section>
+    <section>
+        <h2>Display</h2>
+    </section>
+
+    <section>
+        <p>La propiedad <em><code>display</code></em> es la encargada de controlar si un elemento se comportará como un elemento <code>block</code> o uno <code>inline</code> (entre otras opciones).</p>
+    </section>
+
+    <section>
+        <h3>Display: block</h3>
+        <p>Los elementos <em><code>block</code></em> ocupan el 100% de su contenedor desplazando al siguiente elemento a una nueva línea.</p>
+        <p>Aplican las propiedades del box-model de manera normal.</p>
+    </section>
+
+    <section class="fz-s">
+        <h3>Display: inline</h3>
+        <p>Los elementos <em><code>inline</code></em> mantienen el flow normal de texto.</p>
+        <p>Tienen algunas particularidades a la hora de interpretar el box-model.</p>
+
+        <ul>
+            <li>Ignoran el <code>width</code> y el <code>height</code></li>
+            <li>Si se le aplican <code>paddings</code> verticales no afectaran la posición de los elementos que les rodean.</li>
+            <li>El background no cubrirá la altura total del alto de línea, sino que se ajustará al contenido.</li>
+        </ul>
+
+        <div style="margin: 3rem auto 0; width: 80%;">
+            <p class="u-highlighted fz-xs">Lorem ipsum dolor sit amet, <strong class="u-highlighted">consectetur adipisicing</strong> elit. Alias, esse ut voluptates cumque dolore vitae similique harum, ratione est voluptas reiciendis perspiciatis accusantium sed, <strong class="u-highlighted">libero iure expedita</strong> minima labore magnam.</p>
+        </div>
+    </section>
+
+    <section>
+        <h3>Display: inline-block</h3>
+        <p>El valor <em><code>inline-block</code></em> es una combinación de los dos anteriores.</p>
+        <p>Los elementos <code>inline-block</code> mantienen el flujo del texto como los elementos <code>inline</code> pero interpretan el box-model como un elemento <code>block</code></p>
+
+        <div style="margin: 3rem auto 0; width: 80%;">
+            <p class="u-highlighted fz-xs">Lorem ipsum dolor sit amet, <strong class="u-highlighted">consectetur adipisicing</strong> elit. Alias, esse ut voluptates cumque dolore vitae similique harum, ratione est voluptas reiciendis perspiciatis accusantium sed, <strong class="u-highlighted">libero iure expedita</strong> minima labore magnam.</p>
+        </div>
+    </section>
+
+    <section>
+        <h3>Display: none</h3>
+        <p>El valor <em><code>none</code></em> en la propiedad <code>display</code> removerá por completo el elemento de nuestra página web. Los elementos que le sigan en el HTML ocuparán su lugar en el flow del documento.</p>
+        <p>Un lector de voz ignorará nuestro contenido con <code>display: none</code>, lo cual tenemos que tener en cuenta si no queremos afectar la accesibilidad a la hora de ocultar algo.</p>
+    </section>
+</section>
+<section>
+    <section>
+        <h2>Visibilty y opacity</h2>
+    </section>
+
+    <section>
+        <h3>Visibility</h3>
+        <p>La propiedad <em><code>visibility</code></em> nos permite hacer invisible un objeto pero que este <strong>siga ocupando su lugar en el flow del documento</strong>, por lo que el resto de los elementos seguirán comportándose como si estuviera allí.</p>
+        <hr>
+        <p>Los posibles valores para <code>visibiliy</code> son:<br>
+        <code>visible</code> | <code>hidden</code> | <code>collapse</code></p>
+    </section>
+
+    <section class="fz-s">
+        <h3>Opacity</h3>
+        <p>Podemos controlar la opacidad de un elemento con la propiedad <em><code>opacity</code></em>, cuyo valor va de 0 (transparente) a 1 (opaco).</p>
+        <p>Hay que tener en cuenta que los elementos contenidos por el elemento al que apliquemos opacity también se verán afectados y su opacidad máxima siempre será la del elemento padre.</p>
+        <hr>
+<pre><code data-trim data-trim contenteditable>
+&#060;p&#062;El parrafo tiene una opacidad del 50% por eso, aunque el strong
+tenga el 100%, &#060;strong&#062;sigue siendo semitransparente.&#060;/strong&#062;&#060;/p&#062;
+</code></pre>
+
+<pre><code data-trim contenteditable>
+p { opacity: .5; }
+strong { opacity: 1; }
+</code></pre>
+        <p class="fz-xs" style="opacity: .5;">El parrafo tiene una opacidad del 50% por eso, aunque el strong tenga el 100%, <strong style="opacity: 1;">sigue siendo semitransparente.</strong></p>
+    </section>
+</section>
+
+<section>
+    <section>
+        <h2>Overflow</h2>
+    </section>
+
+    <section>
+        <p>Cuando forzamos las dimensiones del elemento con <em><code>width</code></em> y <em><code>height</code></em> pueden darse dos casos:</p>
+        <ul>
+            <li>Si el contenido ocupa menos que las dimensiones del elemento, el resto de espacio quedará vacio.</li>
+            <li>Si el contenido no cabe dentro de las dimensiones asignadas, se saldrá del elemento. Podemos controlar exactamente de que manera con la propiedad <em><code>overflow</code></em>.</li>
+        </ul>
+    </section>
+
+    <section>
+        <pre><code contenteditable>p { height: 220px; }</code></pre>
+        <div style="border: 2px dotted hsla(0,0%,60%,.6); margin: 0 auto; width: 80%;">
+            <p class="u-highlighted fz-xs" style="border: 1px solid hsla(200, 70%, 60%, .6);height: 220px; margin: 0;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, esse ut voluptates cumque dolore vitae similique harum, ratione est voluptas reiciendis perspiciatis accusantium sed, libero iure expedita minima labore magnam.</p>
+        </div>
+        <hr>
+        <pre><code contenteditable>p { height: 80px; }</code></pre>
+        <div style="border: 2px dotted hsla(0,0%,60%,.6); margin: 0 auto; width: 80%;">
+
+            <p class="u-highlighted fz-xs" style="border: 1px solid hsla(200, 70%, 60%, .6); height: 80px; margin: 0;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, esse ut voluptates cumque dolore vitae similique harum, ratione est voluptas reiciendis perspiciatis accusantium sed, libero iure expedita minima labore magnam.</p>
+        </div>
+    </section>
+
+    <section>
+        <p>La propiedad <em><code>overflow</code></em> controla lo que sucede con el contenido cuando excede el tamaño del elemento contenedor. Sus posibles valores son:</p>
+        <ul class="ta-l">
+            <li><code>visible</code></li>
+            <li><code>hidden</code></li>
+            <li><code>scroll</code></li>
+            <li><code>auto</code></li>
+        </ul>
+    </section>
+
+    <section>
+        <h3>Overflow: visible</h3>
+<pre><code data-trim contenteditable>
+p {
+    height: 80px;
+    overflow: visible;
+}
+</code></pre>
+        <div style="border: 2px dotted hsla(0,0%,60%,.6); margin: 0 auto; width: 80%;">
+            <p class="u-highlighted fz-xs" style="border: 1px solid hsla(200, 70%, 60%, .6); height: 80px; margin: 0;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, esse ut voluptates cumque dolore vitae similique harum, ratione est voluptas reiciendis perspiciatis accusantium sed, libero iure expedita minima labore magnam.</p>
+        </div>
+    </section>
+
+    <section>
+        <h3>Overflow: hidden</h3>
+<pre><code data-trim contenteditable>
+p {
+    height: 80px;
+    overflow: hidden;
+}
+</code></pre>
+        <div style="border: 2px dotted hsla(0,0%,60%,.6); margin: 0 auto; width: 80%;">
+            <p class="u-highlighted fz-xs" style="border: 1px solid hsla(200, 70%, 60%, .6); height: 80px; overflow: hidden; margin: 0;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, esse ut voluptates cumque dolore vitae similique harum, ratione est voluptas reiciendis perspiciatis accusantium sed, libero iure expedita minima labore magnam.</p>
+        </div>
+    </section>
+
+    <section>
+        <h3>Overflow: scroll</h3>
+<pre><code data-trim contenteditable>
+p {
+    height: 150px;
+    overflow: scroll;
+}
+</code></pre>
+        <div style="border: 2px dotted hsla(0,0%,60%,.6); margin: 0 auto; width: 60%;">
+            <p class="u-highlighted fz-xs" style="border: 1px solid hsla(200, 70%, 60%, .6); height: 150px; overflow: scroll; margin: 0;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, esse ut voluptates cumque dolore vitae similique harum, ratione est voluptas reiciendis perspiciatis accusantium sed, libero iure expedita minima labore magnam. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis ipsam quae quibusdam temporibus laboriosam dolorem explicabo modi, esse corrupti error sapiente nemo et odit ea natus consequuntur beatae, voluptate expedita!.</p>
+        </div>
+    </section>
+
+    <section>
+        <h3>Overflow: auto</h3>
+<pre><code data-trim contenteditable>
+p {
+    height: 150px;
+    overflow: auto;
+}
+</code></pre>
+        <div style="border: 2px dotted hsla(0,0%,60%,.6); margin: 0 auto 1em; width: 60%;">
+            <p class="u-highlighted fz-xs" style="border: 1px solid hsla(200, 70%, 60%, .6); height: 150px; overflow: auto; margin: 0;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, esse ut voluptates cumque dolore vitae similique harum, ratione est voluptas reiciendis perspiciatis accusantium sed, libero iure expedita minima labore magnam. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis ipsam quae quibusdam temporibus laboriosam dolorem explicabo modi, esse corrupti error sapiente nemo et odit ea natus consequuntur beatae, voluptate expedita!.</p>
+        </div>
+
+        <div style="border: 2px dotted hsla(0,0%,60%,.6); margin: 0 auto; width: 60%;">
+            <p class="u-highlighted fz-xs" style="border: 1px solid hsla(200, 70%, 60%, .6); height: 150px; overflow: auto; margin: 0;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, esse ut voluptates cumque dolore vitae similique harum.</p>
+        </div>
+    </section>
+</section>
+
+<section id="margin-and-padding">
+    <section>
+        <h2>Padding y margin</h2>
+    </section>
+
+    <section>
+        <h3>Padding</h3>
+        <p>El <code>padding</code> es el espacio interior que separa el contenido del borde de la caja.</p>
+        <hr>
+        <div class="BoxModelGraphic-margin bg-grayLight bdc-gray">
+            <div class="BoxModelGraphic-padding bdc-gray bg-red">
+                <span class="BoxModelGraphic-content bg-grayLight c-grayDarker" contenteditable>contenido</span>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h3>Margin</h3>
+        <p>El <code>margin</code> es el espacio exterior que separa el al elemento del resto de los elementos.</p>
+        <hr>
+        <div class="BoxModelGraphic-margin">
+            <div class="BoxModelGraphic-padding bg-grayLighter bdc-gray">
+                <span class="BoxModelGraphic-content bg-grayLight c-grayDarker" contenteditable>contenido</span>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <p>Tanto el <code>padding</code> como el <code>margin</code> nos permiten controlar cada uno de sus lados individualmente con las siguientes propiedades:</p>
+        <ul class="fz-xs">
+            <li><code>padding-top</code> | <code>padding-right</code> | <code>padding-bottom</code> | <code>padding-left</code></li>
+            <li><code>margin-top</code> | <code>margin-right</code> | <code>margin-bottom</code> | <code>margin-left</code></li>
+        </ul>
+<pre><code data-trim contenteditable>
+.box {
+    padding-top: 10px;
+    padding-bottom: 30px;
+    padding-left: 10%;
+    padding-right: 4em;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+</code></pre>
+</section>
+
+<section class="fz-s">
+    <p>También pueden declararse <em>todos los lados en una sola propiedad</em> (<code>padding</code> y <code>margin</code> respectivamente) separando los valores con un espacio y siguiendo el <strong>sentido de las agujas del reloj</strong>.</p>
+    <p>Si utilizamos esta abreviación, cuando el valor derecho es igual al izquierdo podemos omitir este último. Si además el valor superior e inferior también son iguales podemos omitir el inferior.</p>
+<pre><code data-trim contenteditable>
+.box {
+    padding-top:    10px;
+    padding-right:  20px;
+    padding-bottom: 10px;
+    padding-left:   20px;
+
+    /* es igual a: */
+    padding: 10px 20px 10px 20px;
+
+    /* e igual a: */
+    padding: 10px 20px 10px;
+
+    /* e igual a: */
+    padding: 10px 20px;
+}
+</code></pre>
+    </section>
+</section>
+<section id="borders">
+    <section>
+        <h2>Borders</h2>
+    </section>
+
+    <section class="fz-xs">
+        <p><code>border</code> es la propiedad usada para controlar el borde que delimita un elemento y requiere tres valores: <code>width</code>, <code>style</code> y <code>color</code> separados por un espacio.</p>
+<pre style="float:left; width: 70%;"><code data-trim contenteditable>
+.box {
+    border: 1px solid red;
+}
+</code></pre>
+        <div style="border: 1px solid red; float:right; margin: 20px 10% 0 0; width: 80px; height: 80px;"></div>
+        <p style="clear: both;">Si queremos afectar estos valores de manera individual utilizaremos las propiedades: <em><code>border-width</code></em>, <em><code>border-style</code></em> y <em><code>border-color</code></em>, que pueden a su vez contener 4 valores, uno por lado, al igual que el padding o el margin.</p>
+<pre style="float:left; width: 70%;"><code data-trim contenteditable>
+.box {
+    border-width: 1px 8px 6px 4px;
+    border-style: solid;
+    border-color: red blue;
+}
+</code></pre>
+        <div style="border-width: 1px 8px 6px 4px; border-style: solid; border-color: red blue; float:right; margin: 40px 10% 0 0; width: 80px; height: 80px;"></div>
+    </section>
+
+    <section>
+        <p>Tambien podemos combinar las propiedades anteriores con los diferentes valores <code>top</code>, <code>right</code>, <code>bottom</code>, <code>left</code> para cambios muy precisos.</p>
+<pre><code data-trim contenteditable>
+.box {
+    border-right-style: solid;
+    border-top-width: 4px;
+    border-bottom-color: red;
+}
+</code></pre>
+    </section>
+
+    <section>
+        <p>Los posibles estilos de borde que nos ofrece CSS para la propiedad <em><code>border-style</code></em> son:</p>
+        <p class="fz-xs">
+            <code>none</code> | <code>hidden</code> | <code>dotted</code> | <code>dashed</code> | <code>solid</code> | <code>double</code> | <code>groove</code> | <code>ridge</code> | <code>inset</code> | <code>outset</code>
+        </p>
+        <hr>
+        <div class="BordersExample">
+            <code class="BordersExample--solid">2px <br> solid</code>
+            <code class="BordersExample--double">6px <br> double</code>
+            <code class="BordersExample--dashed">8px <br> dashed</code>
+            <code class="BordersExample--dotted">4px <br> dotted</code>
+        </div>
+    </section>
+
+    <section class="fz-s">
+        <h3>border-radius</h3>
+        <p>La propiedad <em><code>border-radius</code></em> nos permite redondear las esquinas de nuestras cajas.</p>
+        <p>En su forma más simple funciona similar al propiedad a otras propiedades, aceptando 4 valores separados por espacio que indicarán el <strong>radio de la circunferencia</strong> que aplicaremos a las esquinas, empezando el primer valor en la esquina superior izquierda y desplazandose en sentido horario.</p>
+        <pre><code contenteditable>.box { border-radius: 10px 40px 40px 10px; }</code></pre>
+        <div class="bg-grayLighter bdc-red" style="border: 6px solid; border-radius: 10px 40px 40px 10px; margin: 1em auto 0; width: 100px; height: 100px;">
+        </div>
+    </section>
+</section>
+
+<section>
+    <h1>Selectores</h1>
+</section>
+
+<section>
   <section>
-    <h1>El coste de las imágenes</h1>
+    <h2>Conceptos Básicos</h2>
   </section>
 
   <section>
-    <blockquote style="width: 75%;">
-      <p style="font-size: 3rem;">“A picture is worth a thousand words, but its cost can be so much greater.”</p>
-      <footer>- <cite><a href="http://www.fivesimplesteps.com/products/practical-responsive-images">"Practical responsive images"</a>, Ben Seymour</cite></footer>
-    </blockquote>
+    <h3>Componentes de CSS</h3>
+    <p>Una regla CSS se compone de dos partes:</p>
+    <ul>
+      <li>Un <span class="c-green">selector</span>, que indica el elemento o elementos que queremos estilar.</li>
+      <li>Una <span class="c-orange">declaración o bloque de declaraciones</span>, que son las reglas de estilo que se aplicaran a los elementos que hayamos seleccionado.</li>
+    </ul>
+    <hr />
+    <pre class="fz-m c-orange" style="box-shadow: none;">
+  <span class="c-green">p</span> {
+    color: red;
+    font-weight: bold;</span>
+  }
+    </pre>
+  </section>
+
+  <section class="fz-s">
+      <h3>Herencia</h3>
+      <p>Los elementos HTML heredarán algunos estilos de sus elementos contenedores (parent elements), mientras no declaremos otros más específicos.</p>
+      
+
+      <p><b>No todas las propiedades CSS son hereditarias.</b> A grandes rasgos podemos asumir que aquellas referentes a estilos de texto se heredarán pero las pertenecientes al box model no.</p>
   </section>
 
   <section>
-    <p>Las imágenes son el recurso que más añade al peso total de la página.</p>
-    <figure>
-      <img src="img/chart-content.png" alt="" style="height: 24rem;">
-      <figcaption><a href="http://httparchive.org/interesting.php#bytesperpage">Average Bytes per Page by Content Type</a></figcaption>
-    </figure>
+    <pre><code data-trim class="hljs html" contenteditable>
+<p>Lorem ipsum sit amet, <strong>consectetur</strong> adipisicing
+elit. <em>Consequatur</em> quidem unde vel ullam, tempora
+perferendis facilis.</p>
+    </code></pre>
+    
+    <pre><code data-trim class="hljs css" contenteditable>
+p {
+  color: red;
+}
+
+strong {
+  color: blue;
+}
+    </code></pre>
+    <hr>
+    <p class="c-red">Lorem ipsum sit amet, <strong class="c-blue">consectetur</strong> adipisicing elit. <em>Consequatur</em> quidem unde vel ullam, tempora perferendis facilis.</p>
   </section>
 
   <section>
-    <p>En móvil la proporción se mantiene.</p>
-    <figure>
-      <img src="img/chart-content-mobile.png" alt="" style="height: 24rem;">
-      <figcaption><a href="http://mobile.httparchive.org/interesting.php#bytesperpage">Average Bytes per Page by Content Type</a></figcaption>
-    </figure>
+    <h3>Cascada</h3>
+    <p>La "<i>cascada</i>" a la que hace referencia la C de CSS explica la manera en la que el lenguaje resuelve los conflictos entre selectores.</p>
+    <p>El cliente web lee los estilos desde la primera línea del documento de manera descendente. Por esta razón si un selector aplica una regla ya exisitente en ese selector esta sera sobreescrita (siempre y cuando la especificidad sea la misma).</p>
   </section>
 
   <section>
-    <p>En móvil, el alto peso de las imágenes descargadas no sólo afecta la experiencia de usuario sino que puede tener un alto coste para su bolsillo dependiendo las condiciones de su plan de datos.</p>
-    <p>Un ejemplo: <a href="https://mobiforge.com/research-analysis/performance-money-part-1-end-users-wallet">Performance is money, part 1: the end-user's wallet</a></p>
+    <pre><code data-trim class="hljs html" contenteditable>
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio
+accusamus laborum temporibus itaque quos, ipsum, est sit ipsa, soluta
+aliquam modi cum maiores neque facere nesciunt, sequi corrupti quam
+aspernatur.</p>
+    </code></pre>
+    <pre><code data-trim class="hljs css" contenteditable>
+p {
+  color: red;
+}
+
+p {
+  color: blue;
+}
+    </code></pre>
+    
+    <hr>
+    <p class="c-blue">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio accusamus laborum temporibus itaque quos, ipsum, est sit ipsa, soluta aliquam modi cum maiores neque facere nesciunt, sequi corrupti quam aspernatur.</p>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h2>Selectores básicos</h2>
   </section>
 
   <section>
-    <h2>Enlaces relacionados:</h2>
-    <ul class="related-links">
-      <li>
-        <a href="http://www.webperformancetoday.com/2014/12/02/page-bloat-update-average-top-1000-web-page-1795-kb-size/">“Page bloat update: The average top 1000 web page is 1795 KB in size”</a> <i>&#8213; Tammy Everts</i>
-      </li>
-      <li>
-        <a href="https://vimeo.com/108328247">“Design decisions through the lens of a performance budget”</a> <i>&#8213; Yesenia Perez-Cruz</i>
-      </li>
-      <li>
-        <a href="http://danielmall.com/articles/how-to-make-a-performance-budget/">“How to make a performance budget”</a> <i>&#8213; Dan Mall</i>
-      </li>
+    <h3>Selector de tipo (type selector)</h3>
+    <p>Selecciona todos los elementos de la página cuya etiqueta HTML (<i>tag</i>) coincide con el valor del selector.</p>
+    <hr />
+    <pre><code class="hljs html" data-trim contenteditable>
+<p>...</p>
+    </code></pre>
+    <pre><code class="hljs css" data-trim contenteditable>
+p {
+  color: red;
+}
+    </code></pre>
+  </section>
+
+
+  <section class="fz-s">
+    <h3>Selector de Clase (class selector)</h3>
+    <ul>
+      <li>Podemos asignar el atributo <code>class</code> a cualquier elemento HTML.</li>
+      <li>Pueden tener cualquier <a href="https://developer.mozilla.org/es/docs/Web/CSS/Escribir_CSS_eficiente" target="_blank">nombre</a>.</li>
+      <li>Se pueden aplicar a múltiples elementos en una misma página.</li>
+      <li>Son sensibles a las mayúsculas.</li>
+    </ul>
+    
+    <hr />
+    <pre><code class="hljs html" data-trim contenteditable>
+<p class="destacado">...</p>
+<p>...</p>
+<p>...</p>
+<p class="destacado">...</p>
+<p>...</p>
+    </code></pre>
+    <pre><code class="hljs css" data-trim contenteditable>
+.destacado {
+  color: red;
+}
+    </code></pre>
+  </section>
+
+  <section>
+    <h3>Selector de ID (Id selector)</h3>
+    <ul>
+      <li>Podemos asignar el atributo <code>id</code> a cualquier elemento HTML.</li>
+      <li>Pueden tener cualquier nombre.</li>
+      <li>Los ID han de ser <strong class="u-marked">únicos en una misma página</strong>.</li>
+      <li>Son sensibles a las mayúsculas.</li>
+    </ul>
+    <hr />
+    <pre><code class="hljs html" data-trim contenteditable>
+<div class="header">...</div>
+    </code></pre>
+    <pre><code class="hljs css" data-trim contenteditable>
+#header {
+  color: red;
+}
+    </code></pre>
   </section>
 </section>
 
 
 <section>
   <section>
-    <h1>Bitmap</h1>
+    <h2>Combinaciones selectores</h2>
   </section>
+  
   <section>
-    <h2>Enlaces relacionados:</h2>
-    <ul class="related-links">
-      <li>
-        <a href="https://www.youtube.com/watch?v=k4Xkpawt1EU">“Image Compression: Putting your Images on a Diet”</a> <i>&#8213; Guy Podjarny</i>
-      </li>
+    <h3>Selector Elemento-Específico</h3>
+    <p>La combinación Elemento-específico aplica una clase o un ID exclusivamente al elemento que le precede.</p>
+    <p>Para ello concatenamos el selector de tipo al selector de clase omitiendo espacios entre ambos.</p>
+    <hr />
+    <pre><code class="hljs html" data-trim contenteditable>
+<h1 class="destacado">...</h1>
+<p>...</p>
 
-      <li>
-        <a href="https://vimeo.com/136324133">“The story behind lossy PNG compression”</a> <i>&#8213; Kernel Lesiński</i>
-      </li>
+<h1>...</h1>
+<p class="destacado">...</p>
+    </code></pre>
+    <pre><code class="hljs css" data-trim contenteditable>
+h1.destacado {
+  color: red;
+}
+    </code></pre>
+  </section>
 
-      <li>
-        <a href="http://www.smashingmagazine.com/2009/07/clever-png-optimization-techniques/">“Clever PNG Optimization Techniques”</a> <i>&#8213; Sergey Chikuyonok</i>
-      </li>
+  <section class="fz-s">
+    <h3>Selector Descendente (Descendant selectors)</h3>
+    <p>Se consigue colocando dos (o más) selectores uno de tras de otro <strong class="u-marked">separados por un espacio</strong>.</p>
+    <p>El último selector de la cadena (<i>key selector</i>) es el que se aplica siempre y cuando esté contenido dentro de los selectores precedentes.</p>
 
-      <li>
-        <a href="http://www.smashingmagazine.com/2009/07/clever-jpeg-optimization-techniques/">“Clever JPEG Optimization Techniques”</a> <i>&#8213; Sergey Chikuyonok</i>
-      </li>
+    <hr />
+    <pre><code class="hljs html" data-trim contenteditable>
+<div id="sandwich">
+  <div class="pan">
+    <p class="queso">...</p>
+    <p>...</p>
+  </div>
 
-      <li>
-        <a href="http://optipng.sourceforge.net/pngtech/optipng.html">“A guide to PNG optimization”</a>
-      </li>
+  <p class="queso">...</p>
+</div>
+    </code></pre>
+
+    <pre><code class="hljs css" data-trim contenteditable>
+#sandwich .pan .queso {
+  color: yellow;
+}
+    </code></pre>
+  </section>
+
+  <section>
+    <p>No es necesario que los selectores descendentes sean hijos directos de sus elementos padre para que el selector se aplique.</p>  
+    <hr />
+    <pre><code class="hljs html" data-trim contenteditable>
+<div id="tupper">
+  <div id="sandwich">
+    <div class="pan">
+      <p class="queso">...</p>
+      <p>...</p>
+    </div>
+
+    <p class="queso">...</p>
+  </div>
+</div>
+    </code></pre>
+
+    <pre><code class="hljs css" data-trim contenteditable>
+#tupper .pan .queso {
+  color: yellow;
+}
+    </code></pre>  
+  </section>
+
+  <section>
+    <h3>Agrupar selectores</h3>
+    <p>Podemos aplicar un mismo bloque de declaraciones a varios selectores al mismo tiempo separandolos con comas (,).</p>
+
+    <hr />
+    <pre><code class="hljs css" data-trim contenteditable>
+div,
+h1,
+.clase,
+#identificador p {
+  color: yellow;
+}
+    </code></pre>
   </section>
 </section>
 
+<section>
+    <section>
+        <h2>Pseudo-clases (Pseudo-class)</h2>
+    </section>
+    
+    <section>
+        <p>Una <span class="c-blue">pseudo clase</span> es una keyword que se añade a un <span class="c-green">selector</span> para especificar un estado concreto del mismo.</p>
+        <p>Para escribirlas insertamos dos puntos (<code class="c-red">:</code>) entre el selector y la pseudo clase.</p>
+        <hr>
+        <p class="ta-c fz-l"><span class="c-blue">selector</span><span class="c-red">:</span><span class="c-green">pseudoclase</span></p>
+    </section>
+    
+    <section>
+        <h3>Algunas pseudo-clases</h3>
+        <ul>
+            <li>
+                <p class="mb-xxs"><code class="c-blue">:hover</code>, <code class="c-blue">:active</code>, <code class="c-blue">:visited</code></p>
+                <p>Hacen referencia al estado de un enlace.</p>
+            </li>
+
+            <li>
+                <p class="mb-xxs"><code class="c-blue">:first-child</code>, <code class="c-blue">:last-child</code></p>
+                <p>Seleccionan el primero y el último hijo de un elemente respectivamente.</p>
+            </li>
+
+        </ul>
+    </section>
+
+    <section>
+        <h3>Pseudoclases <span class="marker">:link</span> y <span class="marker">:visited</span></h3>
+        <p style="text-align: center">
+            Hacen referencia a un estado concreto de un enlace.
+        </p>
+        <pre><code data-trim contenteditable>
+/* Estado enlace no visitado */
+a:link {
+    color: #c0ffee;
+}
+
+/* Estado enlace visitado */
+a:visited {
+    color: #decaff;
+}
+        </code></pre>
+        <small>TIP - <span class="marker">:link</span> ha de aplicarse ANTES de <span class="marker">:visited</span> para que funcionen correctamente.</small>
+
+    </section>
+
+    <section>
+        <h3>Pseudoclases <span class="marker">:hover</span> y <span class="marker">:active</span></h3>
+        <p style="text-align: center">
+            Hacen referencia a un estado concreto de un enlace.
+        </p>
+        <pre><code data-trim contenteditable>
+/* Estado sobre un enlace */
+a:hover {
+    color: #bada55;
+}
+
+/* Estado enlace activo */
+a:active {
+    color: #1ad1e5;
+}
+        </code></pre>
+        <small>TIP - <span class="marker">:hover</span> ha de aplicarse ANTES de <span class="marker">:active</span> para que funcionen correctamente.</small>
+    </section>
+
+    <section>
+        <h3>Pseudoclase <span class="marker">:first-child</span></h3>
+        <p style="text-align: center">
+            Selecciona el primer hijo de un elemento.
+        </p>
+        <pre><code data-trim contenteditable>
+/* Seleccionamos el primer elemento li de cualquier ul del DOM */
+li:first-child {
+    color: #fe0;
+}
+
+/* Seleccionamos el primer elemento li contenido en nav */
+nav li:first-child {
+    color: #1ad1e5;
+}
+        </code></pre>
+    </section>
+
+    <section>
+        <h3>Pseudoclase <span class="marker">:last-child</span></h3>
+        <p style="text-align: center">
+            Selecciona el último hijo de un elemento.
+        </p>
+        <pre><code data-trim contenteditable>
+/* Seleccionamos el último elemento li de cualquier ul del DOM */
+li:last-child {
+    color: #fe0;
+}
+
+/* Seleccionamos el último elemento li contenido en nav */
+nav li:last-child {
+    color: #c55;
+}
+        </code></pre>
+    </section>
+
+    <section>
+        <h3>Pseudoclase <span class="marker">:nth-child()</span></h3>
+        <p style="text-align: center">
+            Selecciona el elemento dado en la expresión.<br />
+            Mediante <span class="marker">even</span> y <span class="marker">odd</span> podemos seleccionar pares/i
+        </p>
+        <pre><code data-trim contenteditable>
+/* Seleccionamos sólo los LI pares */
+li:nth-child(even) {
+    color: #fafafa;
+}
+
+/* Seleccionamos un LI de cada 3 */
+li:nth-child(3n) {
+    color: #fafafa;
+}
+
+        </code></pre>
+
+        <p>Además podemos usar <span class="marker">nth-last-child(2)</span> para seleccionar el segundo elemento empezando por el final.</p>
+    </section>
+
+    <section>
+        <h3>Pseudoclase <span class="marker">:not()</span></h3>
+        <p><span class="marker">:not()</span> es una pseudoclase que admite como argumento a otro selector, el cual excluirá a la hora de aplicar su selección.</p>
+
+        <pre><code data-trim contenteditable>
+&#60;ul&#62;
+    &#60;li&#62;Item 1&#60;/li&#62;
+    &#60;li class="diferente"&#62;Item 2&#60;/li&#62;
+    &#60;li&#62;Item 3&#60;/li&#62;
+&#60;/ul&#62;
+        </code></pre>
+
+        <pre><code data-trim contenteditable>
+/* Selecciona todos los LI excepto el de la class .diferente */
+li:not(.diferente) { color: red; }
+        </code></pre>
+        <ul style="font-size: 1.5rem; line-height: 1; margin-bottom: 0;">
+            <li style="color: red;">Item 1</li>
+            <li>Item 2</li>
+            <li style="color: red;">Item 3</li>
+        </ul>
+    </section>
+
+    <section>
+        <h3>Pseudoclase <span class="marker">:target</span></h3>
+        <p style="text-align: center">
+            Selecciona el elemento cuyo ID coincide con la URL del site.
+        </p>
+        <pre><code data-trim contenteditable>
+/* Aplicamos color cuando la URL sea: http://mysite.com/#exoplanet */
+section:exoplanet {
+    background-color: #fe0;
+}
+        </code></pre>
+        <p style="text-align: center"><a href="/target.html" target="_blank">ver ejemplo</a></p>
+    </section>
+
+    <section>
+        <h3>Pseudoclase <span class="marker">:checked</span></h3>
+        <p style="text-align: center">
+            Selecciona el checkbox cuyo estado es 'checked'.
+        </p>
+        <pre><code data-trim contenteditable>
+/* Aplicamos color a la etiqueta cuando el estado es checked */
+input[type=checkbox]:checked + label {
+  color: #fe0;
+  font-style: normal;
+}
+        </code></pre>
+    </section>
+
+    <section>
+        <h3>Pseudoclase <span class="marker">:focus</span></h3>
+        <p style="text-align: center">
+            Definimos el estilo del estado 'hover' para <span class="marker">enlaces</span> y elementos <span class="marker">input</span> cuando se navega con el teclado.
+        </p>
+        <pre><code data-trim contenteditable>
+/* Aplicamos estilo a un input text cuando su estado es focus */
+input[type=text]:focus {
+  color: black;
+  background: yellow;
+}
+        </code></pre>
+    </section>
+
+    <section>
+        <h3>Pseudoclase <span class="marker">:required</span></h3>
+        <p style="text-align: center">
+            Definimos el estilo de todos los elementos INPUT que dispongan del atributo <span class="marker">required</span>.<br />
+            De esta forma podemos identificar de forma diferente los campos obligatorios de un formulario.
+        </p>
+        <pre><code data-trim contenteditable>
+/* Aplicamos estilo a un input obligatorio de un form */
+input[type=text]:required {
+  color: black;
+  background: red;
+}
+        </code></pre>
+    </section>
+
+    <section>
+        <h3>Pseudoclase <span class="marker">:optional</span></h3>
+        <p style="text-align: center">
+            Representa todos los elementos INPUT que no tengan el atributo <span class="marker">required</span>.<br />
+        </p>
+        <pre><code data-trim contenteditable>
+/* Aplicamos estilo a un input obligatorio de un form */
+input[type=text]:optional {
+  color: black;
+  background: lightgrey;
+}
+        </code></pre>
+    </section>
+
+    <section>
+        <h3>Pseudoclase <span class="marker">:valid</span></h3>
+        <p style="text-align: center">
+            Representa todos los elementos INPUT con contenido validado según hayamos especificado en su tipo.<br />
+            De esta forma podemos aplicar un estilo diferente cuando el usuario ha introducido un valor que no se corresponde al esperado.
+        </p>
+        <pre><code data-trim contenteditable>
+/* Aplicamos estilo para mostrar un input con contenido válido */
+input[type=text]:valid {
+  color: black;
+  background: lightgreen;
+}
+        </code></pre>
+    </section>
+
+    <section>
+        <h3>Pseudoclase <span class="marker">:invalid</span></h3>
+        <p style="text-align: center">
+            Representa todos los elementos INPUT con contenido inválido según hayamos especificado en su tipo.
+        </p>
+        <pre><code data-trim contenteditable>
+/* Aplicamos estilo para mostrar un input con contenido no válido */
+input[type=text]:invalid {
+  color: black;
+  background: red;
+}
+        </code></pre>
+    </section>
+
+    <section>
+        <h3>Index of standard pseudo-classes</h3>
+        <p style="text-align: center">
+            A día de hoy disponemos de las siguientes pseudoclases. <br />
+            Es necesario consultar la compatibilidad de cada una en los diferentes navegadores web.
+        </p>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes" target="_blank"><img src="/indexOfPseudoclasses.png" alt=""></a>
+    </section>
+</section>
+
+
+
+
+
+
+
+
+
+<section class="text-left">
+    <section>
+        <h2>Pseudoelementos CSS</h2>
+    </section>
+
+    <section>
+        <h4 style="text-transform: none">Llamamos <span class="marker">pseudo elemento</span> a una abstracción de un elemento en sí que puede no existir en el propio DOM.<br />
+        También pueden referirse a una parte específica del elemento.</h4><br />
+
+        <h4 style="text-transform: none">Su sintaxis es el nombre precedido por <span class="marker">::</span></h4>
+
+        <h3 style="text-transform: none; color:#FF7F03">elemento<span class="marker">::pseudoelemento</span></h3>
+    </section>
+
+    <section>
+        <h3>Pseudoelemento <span class="marker">::before</span></h3>
+        <p style="text-align: center">
+            Insertamos contenido <span class="marker">antes</span> de un elemento dado mediante la declaración <span class="marker">content</span>.
+        </p>
+        <pre><code data-trim contenteditable>
+/* Insertamos un gato antes del párrafo */
+h3::before {
+    content: "(⊙_◎)";
+    color: yellow;
+    font-size: 0.7em;
+    padding-right: 20px;
+}
+
+        </code></pre>
+        <h3 class="symple-before">Say whaaat?</h3>
+
+    </section>
+
+    <section>
+        <h3>Pseudoelemento <span class="marker">::before</span></h3>
+        <p style="text-align: center">
+            Además de texto podemos definir un alto y ancho y añadir una imagen de fondo<br /> para mostrar <span style="text-decoration: line-through">gatos</span> imágenes:
+        </p>
+        <pre><code data-trim contenteditable>
+/* Insertamos un gato antes del párrafo */
+p::before {
+    content: "";
+    background-image: url(cat-watching.gif);
+    float: left; margin: 0 30px 0 50px; height: 250px; width: 400px;
+}
+
+        </code></pre>
+        <p class="catwatching">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, accusantium aspernatur reprehenderit in, doloribus nobis nisi quae tempora magni perspiciatis beatae!</p>
+
+    </section>
+
+    <section>
+        <h3>Pseudoelemento <span class="marker">::after</span></h3>
+        <p style="text-align: center">
+            Del mismo modo, podemos añadir contenido <span class="marker">después</span> de un elemento.
+        </p>
+        <pre class="whitecat-pre"><code data-trim contenteditable>
+/* Insertamos otro gato después del párrafo */
+p::after {
+    content: "";
+    background-image: url(whitecat.gif);
+    position: absolute;
+        top: -222px;
+        right: -250px;
+}
+
+        </code></pre>
+        <p class="whitecat">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, accusantium aspernatur reprehenderit in, doloribus nobis nisi quae tempora magni perspiciatis beatae!</p>
+
+    </section>
+
+    <section>
+        <h3>Pseudoelemento <span class="marker">::first-letter</span></h3>
+        <p style="text-align: center">
+            Seleccionan únicamente la primera letra de la primera línea de un bloque.
+        </p>
+        <pre><code data-trim contenteditable>
+/* Destacamos sólo la primera letra */
+p::first-letter {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #D5C70F;
+    display: inline-block;
+    float: left;
+    text-shadow: 2px 2px 2px #000;
+}
+
+        </code></pre>
+        <p class="firstletter">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, accusantium aspernatur reprehenderit in, doloribus nobis nisi quae tempora magni perspiciatis beatae!</p>
+
+    </section>
+
+    <section>
+        <h3>Pseudoelemento <span class="marker">::first-line</span></h3>
+        <p style="text-align: center">
+            Seleccionan únicamente la primera línea de un elemento de bloque que contenga texto. Sólo tiene efecto en elementos con su propiedad "display" en: block, inline-block, table-cell o table-caption.
+        </p>
+        <pre><code data-trim contenteditable>
+/* Destacamos sólo la primera línea */
+p::first-line {
+    color: #D5C70F;
+    font-size: 1.2em;
+    line-height: 1.2;
+    text-shadow: 2px 2px 2px #000;
+}
+
+        </code></pre>
+        <p class="firstline">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, accusantium aspernatur reprehenderit in, doloribus nobis nisi quae tempora magni perspiciatis beatae!</p>
+
+    </section>
+
+    <section>
+        <h3>Pseudoelemento <span class="marker">::selection</span></h3>
+        <p style="text-align: center">
+            Se aplica únicamente a la parte de texto que ha sido seleccionada por el usuario con el mouse mediante pulsar y arrastrar.
+        </p>
+        <pre><code data-trim contenteditable>
+/* Texto destacado */
+p::selection {
+    color: #D5C70F;
+    background: transparent;
+    text-shadow: 2px 2px 2px #000;
+}
+
+        </code></pre>
+        <p class="selection">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, accusantium aspernatur reprehenderit in, doloribus nobis nisi quae tempora magni perspiciatis beatae!</p>
+
+        <small class="marker">Este selector ha sido eliminado de la especificación CSS3 pero de momento los navegadores siguen dándole soporte.</small>
+
+    </section>
+
+    <section>
+        <h3>Pseudoelemento <span class="marker">::backdrop</span></h3>
+        <p style="text-align: center">
+            Se aplica únicamente cuando utilizamos la vista de navegador a pantalla completa.<br />
+            Este pseudoelemento se usa junto a la pseudoclase :fullscreen.
+        </p>
+        <pre><code data-trim contenteditable>
+/* Backdrop con un contenido fullscreen */
+*:fullscreen::backdrop {
+  position:fixed;
+  top:0; right:0; bottom:0; left:0;
+  background:black;
+}
+iframe:fullscreen {
+  /* Añadimos los estilos del contenido que queremos ver a pantalla completa */
+}
+
+        </code></pre>
+        
+        <p style="text-align: center"><a href="https://developer.mozilla.org/samples/domref/fullscreen.html" target="_blank">ver ejemplo</a></p>
+
+    </section>
+
+    <section>
+        <h3>Index of standard pseudo-elements</h3>
+        <p style="text-align: center">
+            En Mozilla Developer Network podemos consultar el listado completo de pseudoelementos soportados actualmente. <br />
+            Es necesario consultar la compatibilidad de cada uno en los diferentes navegadores web.
+        </p>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-elements" target="_blank"><img src="./img/slides/css-pseudoclasses/indexOfPseudoelements.png" alt=""></a>
+    </section>
+
+</section>
 
 <section>
   <h2 style="text-align: center;">¡Gracias!</strong></h2>

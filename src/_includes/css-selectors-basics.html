@@ -1,0 +1,64 @@
+<section>
+  <section>
+    <h2>Selectores básicos</h2>
+  </section>
+
+  <section>
+    <h3>Selector de tipo (type selector)</h3>
+    <p>Selecciona todos los elementos de la página cuya etiqueta HTML (<i>tag</i>) coincide con el valor del selector.</p>
+    <hr />
+    <pre><code class="hljs html" data-trim contenteditable>
+<p>...</p>
+    </code></pre>
+    <pre><code class="hljs css" data-trim contenteditable>
+p {
+  color: red;
+}
+    </code></pre>
+  </section>
+
+
+  <section class="fz-s">
+    <h3>Selector de Clase (class selector)</h3>
+    <ul>
+      <li>Podemos asignar el atributo <code>class</code> a cualquier elemento HTML.</li>
+      <li>Pueden tener cualquier <a href="https://developer.mozilla.org/es/docs/Web/CSS/Escribir_CSS_eficiente" target="_blank">nombre</a>.</li>
+      <li>Se pueden aplicar a múltiples elementos en una misma página.</li>
+      <li>Son sensibles a las mayúsculas.</li>
+    </ul>
+    
+    <hr />
+    <pre><code class="hljs html" data-trim contenteditable>
+<p class="destacado">...</p>
+<p>...</p>
+<p>...</p>
+<p class="destacado">...</p>
+<p>...</p>
+    </code></pre>
+    <pre><code class="hljs css" data-trim contenteditable>
+.destacado {
+  color: red;
+}
+    </code></pre>
+  </section>
+
+  <section>
+    <h3>Selector de ID (Id selector)</h3>
+    <ul>
+      <li>Podemos asignar el atributo <code>id</code> a cualquier elemento HTML.</li>
+      <li>Pueden tener cualquier nombre.</li>
+      <li>Los ID han de ser <strong class="u-marked">únicos en una misma página</strong>.</li>
+      <li>Son sensibles a las mayúsculas.</li>
+    </ul>
+    <hr />
+    <pre><code class="hljs html" data-trim contenteditable>
+<div class="header">...</div>
+    </code></pre>
+    <pre><code class="hljs css" data-trim contenteditable>
+#header {
+  color: red;
+}
+    </code></pre>
+  </section>
+</section>
+
