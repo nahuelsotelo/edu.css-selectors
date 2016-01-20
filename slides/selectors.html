@@ -1,6 +1,11 @@
+<!DOCTYPE html>
+<html lang="en" id="no-reveal" class="Demo">
+
+<head class="Demo-head">
+  <head>
     <meta charset="utf-8">
 
-    <title>{{ page.title }} | Escuela IT - Herramientas Frontend</title>
+    <title>Selectors Demo | Escuela IT - Herramientas Frontend</title>
 
     <meta name="description" content="Escuela IT - Herramientas Frontend">
     <meta name="author" content="Nahuel Sotelo">
@@ -27,3 +32,37 @@
     <!--[if lt IE 9]>
     <script src="lib/js/html5shiv.js"></script>
     <![endif]-->
+</head>
+
+
+  <style class="Demo-style" contenteditable>
+   p { color: red; }
+
+   /*p        { color: blue; }*/
+
+   /*.orange  { color: orange; }*/
+
+   /*#purple  { color: purple; }*/
+
+   /*strong   { color: green; }*/
+
+   /*.bold    { color: cyan; }*/
+
+   /*.orange strong { color: green; }*/
+
+   /*p strong { color: gold; }*/
+
+  </style>
+</head>
+
+<body>
+    <div class="Page-wrap">
+        <p>Párrafo 1</p>
+<p class="orange">Párrafo 2 ( .orange )</p>
+<p class="orange" id="purple">Párrafo 3 ( .orange / #purple )</p>
+<p class="orange">Párrafo 4 ( .orange ) con <strong class="bold">negrita (.bold )</strong></p>
+<p class="orange">Párrafo 4 con <strong>negrita</strong></p>
+
+    </div>
+</body>
+</html>

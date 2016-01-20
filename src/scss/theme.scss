@@ -12,11 +12,8 @@
 @import 'custom/base';
 @import 'custom/extend-theme';
 @import 'custom/slides-custom';
+@import 'custom/demo';
 
 // Syntax highlighting
 // --------------------------------------------------------
 @import 'extras/zenburn';
-
-[class^=culo-] {
-  outline: 1px solid red;
-}
