@@ -43,23 +43,52 @@
         <div><small style="border-top: 1px dotted rgba(0,0,0,.6); display: inline-block; padding: 1.5rem 6rem 0;"><i>por</i> <a href="http://nahuelsotelo.com">Nahuel Sotelo</a></small></div>
       </section>
 
-      <section>
-  <p style="font-size: 1.5em; text-align: center;">Hola, soy <strong>Nahuel Sotelo</strong></p>
-  <p style="text-align: center;">Frontend developer en <a href="http://www.schibsted.es/">Schibsted Spain</a> y Profesor de la asignatura Programación Frontend en el Master de <a href="http://www.baued.es/es/estudios/masters-y-posgrados/master-en-diseno-web">Diseño Web de Bau</a>.</p>
+      <section id="hello">
+  <p class="fz-l ta-c">Hola, soy <strong>Nahuel Sotelo</strong></p>
+  <p class="ta-c">Frontend developer en <a href="http://www.schibsted.es/">Schibsted Spain</a> y Profesor de la asignatura Programación Frontend en el Master de <a href="http://www.baued.es/es/estudios/masters-y-posgrados/master-en-diseno-web">Diseño Web de Bau</a>.</p>
 
-  <ul class="social">
-    <li><a href="https://github.com/nahuelsotelo" class="is--github">nahuelsotelo</a></li>
-    <li><a href="https://es.linkedin.com/in/nahuelsotelo" class="is--linkedin">Nahuel Sotelo</a></li>
-    <li><a href="https://twitter.com/nahuelsotelo" class="is--twitter">@nahuelsotelo</a></li>
+  <ul class="Social">
+    <li class="Social-item">
+      <a href="https://github.com/nahuelsotelo" class="Social-link Social-link--github">nahuelsotelo</a>
+    </li>
+    <li class="Social-item">
+      <a href="https://es.linkedin.com/in/nahuelsotelo" class="Social-link Social-link--linkedin">Nahuel Sotelo</a>
+    </li>
+    <li class="Social-item">
+      <a href="https://twitter.com/nahuelsotelo" class="Social-link Social-link--twitter">@nahuelsotelo</a>
+    </li>
   </ul>
 </section>
 
 <section>
   <h2>Contenidos</h2>
-  <ol>
-    <li>Introducción</li>
+  <ol class="fz-xs">
+    <li>
+      Box-model y sus propiedades
+      <ul>
+        <li>Box-model</li>
+        <li>Width y Height</li>
+        <li>Display</li>
+        <li>Visibilty y Opacity</li>
+        <li>Overflow</li>
+        <li>Padding y Margin</li>
+        <li>Borders</li>
+      </ul>
+    </li>
+    <li>
+      Selectores
+      <ul>
+        <li>Conceptos básicos</li>
+        <li>Selectores básicos</li>
+        <li>Combinando selectores</li>
+        <li>Pseudo-clases (pseudo-classes)</li>
+        <li>Especificidad (specificity)</li>
+        <li>Pseudo-elementos (pseudo-elements)</li>
+      </ul>
+    </li>
   </ol>
 </section>
+
 
 <section>
     <h1>Box-model <span>y sus propiedades</span></h1>
@@ -85,7 +114,7 @@
     </section>
 
     <section>
-        <div class="BoxModelGraphic-margin">
+        <div class="BoxModelGraphic-margin mb-m">
             <div class="BoxModelGraphic-padding">
                 <span class="BoxModelGraphic-content" contenteditable>contenido</span>
             </div>
@@ -105,8 +134,8 @@
 
     <section>
         <p>Por defecto <strong>el navegador añade los paddings y los bordes a las dimensiones del elemento</strong></p>
-        
-        <div class="BoxModelGraphic-padding">
+
+        <div class="BoxModelGraphic-padding mb-m">
             <span  class="BoxModelGraphic-content" contenteditable>contenido</span>
         </div>
         <p class="BoxModelGraphic-legend ta-c fz-xxs"><span class="c-purple">300px</span> + <span class="c-yellow">50px * 2</span> + <span class="c-red">5px * 2</span> = <span class="fz-xs">410px</span></p>
@@ -131,7 +160,7 @@
             <li><em><code>border-box</code></em>: Incluye <code>padding</code> y <code>border</code> dentro de las dimensiones.</li>
         </ul>
     </section>
-    
+
     <section>
         <p>Es una buena idea, sobre todo si trabajamos con una layout flexible (en porcentajes) declarar <em><code>box-sizing: border-box</code></em> para todos los elementos usando el selector universal (<code>*</code>).</p>
 <pre><code data-trim contenteditable>*,
@@ -145,6 +174,7 @@
         <p class="fz-xs ta-c"><a href="https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/">“Inheriting box-sizing Probably Slightly Better Best-Practice”</a> - Chris Coyier</p>
     </section>
 </section>
+
 <section id="width-and-height">
     <section>
         <h2>Width y height</h2>
@@ -419,6 +449,7 @@ p {
 </code></pre>
     </section>
 </section>
+
 <section id="borders">
     <section>
         <h2>Borders</h2>
@@ -481,7 +512,6 @@ p {
 <section>
     <h1>Selectores</h1>
 </section>
-
 <section>
   <section>
     <h2>Conceptos Básicos</h2>
@@ -626,9 +656,9 @@ p {
 
 <section>
   <section>
-    <h2>Combinaciones selectores</h2>
+    <h2>Combinando selectores</h2>
   </section>
-  
+
   <section>
     <h3>Selector Elemento-Específico</h3>
     <p>La combinación Elemento-específico aplica una clase o un ID exclusivamente al elemento que le precede.</p>
@@ -673,7 +703,7 @@ h1.destacado {
   </section>
 
   <section>
-    <p>No es necesario que los selectores descendentes sean hijos directos de sus elementos padre para que el selector se aplique.</p>  
+    <p>No es necesario que los selectores descendentes sean hijos directos de sus elementos padre para que el selector se aplique.</p>
     <hr />
     <pre><code class="hljs html" data-trim contenteditable>
 <div id="tupper">
@@ -692,7 +722,7 @@ h1.destacado {
 #tupper .pan .queso {
   color: yellow;
 }
-    </code></pre>  
+    </code></pre>
   </section>
 
   <section>
@@ -713,21 +743,22 @@ h1,
 
 <section>
     <section>
-        <h2>Pseudo-clases (Pseudo-class)</h2>
+        <h2>Pseudo-clases (Pseudo-classes)</h2>
     </section>
-    
+
     <section>
-        <p>Una <span class="c-blue">pseudo clase</span> es una keyword que se añade a un <span class="c-green">selector</span> para especificar un estado concreto del mismo.</p>
+        <p>Una <span class="c-blue">pseudo clase</span> es una keyword que se añade a un <span class="c-green">selector</span> para especificar <strong>un estado concreto del mismo</strong>.</p>
         <p>Para escribirlas insertamos dos puntos (<code class="c-red">:</code>) entre el selector y la pseudo clase.</p>
         <hr>
-        <p class="ta-c fz-l"><span class="c-blue">selector</span><span class="c-red">:</span><span class="c-green">pseudoclase</span></p>
+        <p class="ta-c fz-l"><span class="c-blue">selector</span><span class="c-red">:</span><span class="c-green">pseudo-clase</span></p>
     </section>
-    
+
     <section>
-        <h3>Algunas pseudo-clases</h3>
-        <ul>
+        <h3 class="mb-0">Algunas pseudo-clases</h3>
+        <p class="ta-c fz-xs">[ <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes">Listado completo</a> ]</p>
+        <ul class="fz-s">
             <li>
-                <p class="mb-xxs"><code class="c-blue">:hover</code>, <code class="c-blue">:active</code>, <code class="c-blue">:visited</code></p>
+                <p class="mb-xxs"><code class="c-blue">:hover</code>, <code class="c-blue">:focus</code>, <code class="c-blue">:active</code>, <code class="c-blue">:visited</code></p>
                 <p>Hacen referencia al estado de un enlace.</p>
             </li>
 
@@ -736,236 +767,16 @@ h1,
                 <p>Seleccionan el primero y el último hijo de un elemente respectivamente.</p>
             </li>
 
+            <li>
+                <p class="mb-xxs"><code class="c-blue" contenteditable>:nth-child()</code>, <code class="c-blue" contenteditable>:nth-last-child()</code></p>
+                <p>Selecciona los elementos dados en la expresión de acuerdo a su posicion en el DOM.</p>
+            </li>
+
+            <li>
+                <p class="mb-xxs"><code class="c-blue" contenteditable>:checked</code>, <code class="c-blue" contenteditable>:required</code>, <code class="c-blue" contenteditable>:optional</code>, <code class="c-blue" contenteditable>:valid</code>, <code class="c-blue" contenteditable>:invalid</code></p>
+                <p>Seleccionan elementos de formulario de acuerdo a los valores de sus atributos.</p>
+            </li>
         </ul>
-    </section>
-
-    <section>
-        <h3>Pseudoclases <span class="marker">:link</span> y <span class="marker">:visited</span></h3>
-        <p style="text-align: center">
-            Hacen referencia a un estado concreto de un enlace.
-        </p>
-        <pre><code data-trim contenteditable>
-/* Estado enlace no visitado */
-a:link {
-    color: #c0ffee;
-}
-
-/* Estado enlace visitado */
-a:visited {
-    color: #decaff;
-}
-        </code></pre>
-        <small>TIP - <span class="marker">:link</span> ha de aplicarse ANTES de <span class="marker">:visited</span> para que funcionen correctamente.</small>
-
-    </section>
-
-    <section>
-        <h3>Pseudoclases <span class="marker">:hover</span> y <span class="marker">:active</span></h3>
-        <p style="text-align: center">
-            Hacen referencia a un estado concreto de un enlace.
-        </p>
-        <pre><code data-trim contenteditable>
-/* Estado sobre un enlace */
-a:hover {
-    color: #bada55;
-}
-
-/* Estado enlace activo */
-a:active {
-    color: #1ad1e5;
-}
-        </code></pre>
-        <small>TIP - <span class="marker">:hover</span> ha de aplicarse ANTES de <span class="marker">:active</span> para que funcionen correctamente.</small>
-    </section>
-
-    <section>
-        <h3>Pseudoclase <span class="marker">:first-child</span></h3>
-        <p style="text-align: center">
-            Selecciona el primer hijo de un elemento.
-        </p>
-        <pre><code data-trim contenteditable>
-/* Seleccionamos el primer elemento li de cualquier ul del DOM */
-li:first-child {
-    color: #fe0;
-}
-
-/* Seleccionamos el primer elemento li contenido en nav */
-nav li:first-child {
-    color: #1ad1e5;
-}
-        </code></pre>
-    </section>
-
-    <section>
-        <h3>Pseudoclase <span class="marker">:last-child</span></h3>
-        <p style="text-align: center">
-            Selecciona el último hijo de un elemento.
-        </p>
-        <pre><code data-trim contenteditable>
-/* Seleccionamos el último elemento li de cualquier ul del DOM */
-li:last-child {
-    color: #fe0;
-}
-
-/* Seleccionamos el último elemento li contenido en nav */
-nav li:last-child {
-    color: #c55;
-}
-        </code></pre>
-    </section>
-
-    <section>
-        <h3>Pseudoclase <span class="marker">:nth-child()</span></h3>
-        <p style="text-align: center">
-            Selecciona el elemento dado en la expresión.<br />
-            Mediante <span class="marker">even</span> y <span class="marker">odd</span> podemos seleccionar pares/i
-        </p>
-        <pre><code data-trim contenteditable>
-/* Seleccionamos sólo los LI pares */
-li:nth-child(even) {
-    color: #fafafa;
-}
-
-/* Seleccionamos un LI de cada 3 */
-li:nth-child(3n) {
-    color: #fafafa;
-}
-
-        </code></pre>
-
-        <p>Además podemos usar <span class="marker">nth-last-child(2)</span> para seleccionar el segundo elemento empezando por el final.</p>
-    </section>
-
-    <section>
-        <h3>Pseudoclase <span class="marker">:not()</span></h3>
-        <p><span class="marker">:not()</span> es una pseudoclase que admite como argumento a otro selector, el cual excluirá a la hora de aplicar su selección.</p>
-
-        <pre><code data-trim contenteditable>
-&#60;ul&#62;
-    &#60;li&#62;Item 1&#60;/li&#62;
-    &#60;li class="diferente"&#62;Item 2&#60;/li&#62;
-    &#60;li&#62;Item 3&#60;/li&#62;
-&#60;/ul&#62;
-        </code></pre>
-
-        <pre><code data-trim contenteditable>
-/* Selecciona todos los LI excepto el de la class .diferente */
-li:not(.diferente) { color: red; }
-        </code></pre>
-        <ul style="font-size: 1.5rem; line-height: 1; margin-bottom: 0;">
-            <li style="color: red;">Item 1</li>
-            <li>Item 2</li>
-            <li style="color: red;">Item 3</li>
-        </ul>
-    </section>
-
-    <section>
-        <h3>Pseudoclase <span class="marker">:target</span></h3>
-        <p style="text-align: center">
-            Selecciona el elemento cuyo ID coincide con la URL del site.
-        </p>
-        <pre><code data-trim contenteditable>
-/* Aplicamos color cuando la URL sea: http://mysite.com/#exoplanet */
-section:exoplanet {
-    background-color: #fe0;
-}
-        </code></pre>
-        <p style="text-align: center"><a href="/target.html" target="_blank">ver ejemplo</a></p>
-    </section>
-
-    <section>
-        <h3>Pseudoclase <span class="marker">:checked</span></h3>
-        <p style="text-align: center">
-            Selecciona el checkbox cuyo estado es 'checked'.
-        </p>
-        <pre><code data-trim contenteditable>
-/* Aplicamos color a la etiqueta cuando el estado es checked */
-input[type=checkbox]:checked + label {
-  color: #fe0;
-  font-style: normal;
-}
-        </code></pre>
-    </section>
-
-    <section>
-        <h3>Pseudoclase <span class="marker">:focus</span></h3>
-        <p style="text-align: center">
-            Definimos el estilo del estado 'hover' para <span class="marker">enlaces</span> y elementos <span class="marker">input</span> cuando se navega con el teclado.
-        </p>
-        <pre><code data-trim contenteditable>
-/* Aplicamos estilo a un input text cuando su estado es focus */
-input[type=text]:focus {
-  color: black;
-  background: yellow;
-}
-        </code></pre>
-    </section>
-
-    <section>
-        <h3>Pseudoclase <span class="marker">:required</span></h3>
-        <p style="text-align: center">
-            Definimos el estilo de todos los elementos INPUT que dispongan del atributo <span class="marker">required</span>.<br />
-            De esta forma podemos identificar de forma diferente los campos obligatorios de un formulario.
-        </p>
-        <pre><code data-trim contenteditable>
-/* Aplicamos estilo a un input obligatorio de un form */
-input[type=text]:required {
-  color: black;
-  background: red;
-}
-        </code></pre>
-    </section>
-
-    <section>
-        <h3>Pseudoclase <span class="marker">:optional</span></h3>
-        <p style="text-align: center">
-            Representa todos los elementos INPUT que no tengan el atributo <span class="marker">required</span>.<br />
-        </p>
-        <pre><code data-trim contenteditable>
-/* Aplicamos estilo a un input obligatorio de un form */
-input[type=text]:optional {
-  color: black;
-  background: lightgrey;
-}
-        </code></pre>
-    </section>
-
-    <section>
-        <h3>Pseudoclase <span class="marker">:valid</span></h3>
-        <p style="text-align: center">
-            Representa todos los elementos INPUT con contenido validado según hayamos especificado en su tipo.<br />
-            De esta forma podemos aplicar un estilo diferente cuando el usuario ha introducido un valor que no se corresponde al esperado.
-        </p>
-        <pre><code data-trim contenteditable>
-/* Aplicamos estilo para mostrar un input con contenido válido */
-input[type=text]:valid {
-  color: black;
-  background: lightgreen;
-}
-        </code></pre>
-    </section>
-
-    <section>
-        <h3>Pseudoclase <span class="marker">:invalid</span></h3>
-        <p style="text-align: center">
-            Representa todos los elementos INPUT con contenido inválido según hayamos especificado en su tipo.
-        </p>
-        <pre><code data-trim contenteditable>
-/* Aplicamos estilo para mostrar un input con contenido no válido */
-input[type=text]:invalid {
-  color: black;
-  background: red;
-}
-        </code></pre>
-    </section>
-
-    <section>
-        <h3>Index of standard pseudo-classes</h3>
-        <p style="text-align: center">
-            A día de hoy disponemos de las siguientes pseudoclases. <br />
-            Es necesario consultar la compatibilidad de cada una en los diferentes navegadores web.
-        </p>
-        <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes" target="_blank"><img src="/indexOfPseudoclasses.png" alt=""></a>
     </section>
 </section>
 
@@ -973,182 +784,187 @@ input[type=text]:invalid {
 
 
 
-
-
-
-
-<section class="text-left">
+<section id="specificity">
     <section>
-        <h2>Pseudoelementos CSS</h2>
+        <h2>Especificidad (specificity)</h2>
     </section>
 
     <section>
-        <h4 style="text-transform: none">Llamamos <span class="marker">pseudo elemento</span> a una abstracción de un elemento en sí que puede no existir en el propio DOM.<br />
-        También pueden referirse a una parte específica del elemento.</h4><br />
-
-        <h4 style="text-transform: none">Su sintaxis es el nombre precedido por <span class="marker">::</span></h4>
-
-        <h3 style="text-transform: none; color:#FF7F03">elemento<span class="marker">::pseudoelemento</span></h3>
+        <p>En CSS, la <span class="u-marked">especificidad</span>, es lo que determina que estilo será el que acabará aplicandose a un elemento determinado.</p>
+        <p>Cuando a un elemento se le aplica <span class="u-marked">más de un selector con reglas que actúan sobre la misma propiedad</span>, es la especificidad la encargada de resolver este conflicto.</p>
     </section>
 
     <section>
-        <h3>Pseudoelemento <span class="marker">::before</span></h3>
-        <p style="text-align: center">
-            Insertamos contenido <span class="marker">antes</span> de un elemento dado mediante la declaración <span class="marker">content</span>.
+        <p>A grandes rasgos podemos ordenar los diferentes tipos de selectores de menor a mayor peso específico de la siguiente manera:</p>
+        <ol>
+            <li>Selectores de elemento</li>
+            <li>Selectores contextuales</li>
+            <li>Clases</li>
+            <li>IDs</li>
+        </ol>
+    </section>
+
+    <section>
+        <h3>Calcular especificidad</h3>
+    </section>
+
+    <section>
+        <p class="specificity">
+            <span class="specificity-item specificity-item--inline">0</span>,<span class="specificity-item specificity-item--id">0</span>,<span class="specificity-item specificity-item--class">0</span>,<span class="specificity-item specificity-item--element">0</span>
         </p>
-        <pre><code data-trim contenteditable>
-/* Insertamos un gato antes del párrafo */
-h3::before {
-    content: "(⊙_◎)";
-    color: yellow;
-    font-size: 0.7em;
-    padding-right: 20px;
-}
-
-        </code></pre>
-        <h3 class="symple-before">Say whaaat?</h3>
-
     </section>
 
     <section>
-        <h3>Pseudoelemento <span class="marker">::before</span></h3>
-        <p style="text-align: center">
-            Además de texto podemos definir un alto y ancho y añadir una imagen de fondo<br /> para mostrar <span style="text-decoration: line-through">gatos</span> imágenes:
+        <pre class="specificity-example">
+<span class="c-blue">p</span> {
+    color: red;
+}</pre>
+        <hr>
+        <p class="specificity"><span class="specificity-item specificity-item--inline">0</span>,<span class="specificity-item specificity-item--id">0</span>,<span class="specificity-item specificity-item--class">0</span>,<span class="specificity-item specificity-item--element">1</span></p>
+    </section>
+
+    <section>
+        <pre class="specificity-example">
+<span class="c-green">.text</span> {
+    color: red;
+}</pre>
+        <hr>
+        <p class="specificity"><span class="specificity-item specificity-item--inline">0</span>,<span class="specificity-item specificity-item--id">0</span>,<span class="specificity-item specificity-item--class">1</span>,<span class="specificity-item specificity-item--element">0</span></p>
+    </section>
+
+    <section>
+        <pre class="specificity-example">
+<span class="c-purple">#main</span> <span class="c-blue">strong</span> {
+    color: red;
+}</pre>
+        <hr>
+        <p class="specificity"><span class="specificity-item specificity-item--inline">0</span>,<span class="specificity-item specificity-item--id">1</span>,<span class="specificity-item specificity-item--class">0</span>,<span class="specificity-item specificity-item--element">1</span></p>
+    </section>
+
+    <section>
+        <pre class="specificity-example" style="font-size: 1.9rem;">
+<span class="c-blue">header</span> <span class="c-blue">ul</span><span class=c-purple>#main-nav</span> <span class="c-green">.sub-menu</span> <span class="c-blue">li</span><span class="c-green">.child</span> <span class="c-blue">a</span><span class="c-green">:hover</span> {
+    color: red;
+}</pre>
+        <hr>
+        <p class="specificity"><span class="specificity-item specificity-item--inline">0</span>,<span class="specificity-item specificity-item--id">1</span>,<span class="specificity-item specificity-item--class">3</span>,<span class="specificity-item specificity-item--element">4</span></p>
+    </section>
+
+    <section>
+        <pre class="specificity-example" style="font-size: 2rem;">
+&#60;p <span class="c-red">style="color: red"</span>&#62;Lorem ipsum dolor sit amet, consectetur adipisicing elit.&#60;/p&#62;</pre>
+        <hr>
+        <p class="specificity"><span class="specificity-item specificity-item--inline">1</span>,<span class="specificity-item specificity-item--id">0</span>,<span class="specificity-item specificity-item--class">0</span>,<span class="specificity-item specificity-item--element">0</span></p>
+    </section>
+
+    <section>
+        <pre class="specificity-example">
+<span class="c-blue">p</span> {
+    color: red <span style="color: red";>!important</span>;
+}</pre>
+        <hr>
+        <p class="specificity specificity-important fragment">
+            <span class="specificity-importantWrap">
+                <span class="specificity-item specificity-item--inline">0</span>,<span class="specificity-item specificity-item--id">0</span>,<span class="specificity-item specificity-item--class">0</span>,<span class="specificity-item specificity-item--element">1</span>
+            </span>
+
+            <span class="specificity-importantWrap">
+                <span class="specificity-item c-red">0</span>,<span class="specificity-item specificity-item--id">0</span>,<span class="specificity-item specificity-item--class">0</span>,<span class="specificity-item specificity-item--element">0</span>
+            </span>
         </p>
+    </section>
+</section>
+
+
+<section id="pseudo-elements">
+    <section>
+        <h2>Pseudo-elementos (Pseudo-elements)</h2>
+    </section>
+
+    <section>
+        <p>Los <span class="c-green">pseudo-elementos</span> nos permiten estilar ciertas <strong>partes del DOM que no son accesibles mediante los selectores normales</strong>, como la primer linea de un párrafo de texto.</p>
+        <p>Al igual que las pseudo-clases, son keywords que se añaden a los <span class="c-blue">selectores</span> pero separadas por dos puntos (<span class="c-red">::</span>)</p>
+
+        <hr>
+        <p class="ta-c fz-l"><span class="c-blue">selector</span><span class="c-red">::</span><span class="c-green">pseudo-elemento</span></p>
+
+        <p class="ta-c fz-xs">[ <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-elements">Listado completo</a> ]</p>
+    </section>
+
+    <section>
+        <h3 style="text-transform: none;"><code>::before / ::after</code></h3>
+
+        <p>Nos permiten añadir un pseudo-elemento como hijo del selector designado. <code>::before</code> lo insertará al comienzo mientras que <code>::after</code> lo hará al final.</p>
+        <p>El contenido lo declararemos con la propiedad CSS <code class="u-marked">content</code></p>
+        <p>Ambos se utilizan para añadir contenido cosmético sin carga semántica y que por eso debe quedar fuera del HTML.</p>
+    </section>
+
+    <section class="PsElementsDemo">
+        <p class="PsElementsDemo-before fz-l">¡Un gato!</p>
         <pre><code data-trim contenteditable>
-/* Insertamos un gato antes del párrafo */
+/* Insertamos un gato AL COMIENZO del texto */
+
 p::before {
-    content: "";
-    background-image: url(cat-watching.gif);
-    float: left; margin: 0 30px 0 50px; height: 250px; width: 400px;
+    content: "(⁎˃ᆺ˂) ";
+    color: #e14f24;
+    font-size: .9em;
+    margin-right: .5em;
 }
-
         </code></pre>
-        <p class="catwatching">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, accusantium aspernatur reprehenderit in, doloribus nobis nisi quae tempora magni perspiciatis beatae!</p>
 
+        <hr>
+
+        <p class="PsElementsDemo-after fz-l">¡Otro gato!</p>
+        <pre><code data-trim contenteditable>
+/* Insertamos un gato AL FINAL del texto */
+
+p::after {
+    content: " (≚ᄌ≚)ﾉ”";
+    color: #e14f24;
+    font-size: .9em;
+    margin-right: .5em;
+}
+        </code></pre>
     </section>
 
-    <section>
-        <h3>Pseudoelemento <span class="marker">::after</span></h3>
-        <p style="text-align: center">
-            Del mismo modo, podemos añadir contenido <span class="marker">después</span> de un elemento.
-        </p>
-        <pre class="whitecat-pre"><code data-trim contenteditable>
-/* Insertamos otro gato después del párrafo */
+    <section class="PsElementsDemo">
+        <p class="fz-s">Los pseudo-elementos creados con <code>::after</code> y <code>::before</code> funcionan como si se tratara de un <code>&#060;span&#062;</code> por lo que podemos darles dimensiones, ponerles imágenes de fondo y posicionarlos normalmente.</p>
+
+        <hr>
+
+        <pre><code data-trim contenteditable>
 p::after {
     content: "";
-    background-image: url(whitecat.gif);
-    position: absolute;
-        top: -222px;
-        right: -250px;
+    background: url(../img/cat-watching.gif) no-repeat center center;
+    background-size: cover;
+    display: block;
+    margin: 0 auto;
+    width: 150px;
+    height: 100px;
 }
-
         </code></pre>
-        <p class="whitecat">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, accusantium aspernatur reprehenderit in, doloribus nobis nisi quae tempora magni perspiciatis beatae!</p>
 
+        <p class="PsElementsDemo-img fz-xs">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, accusantium aspernatur reprehenderit in, doloribus nobis nisi quae tempora magni perspiciatis beatae!</p>
     </section>
-
-    <section>
-        <h3>Pseudoelemento <span class="marker">::first-letter</span></h3>
-        <p style="text-align: center">
-            Seleccionan únicamente la primera letra de la primera línea de un bloque.
-        </p>
-        <pre><code data-trim contenteditable>
-/* Destacamos sólo la primera letra */
-p::first-letter {
-    background-color: rgba(255, 255, 255, 0.2);
-    color: #D5C70F;
-    display: inline-block;
-    float: left;
-    text-shadow: 2px 2px 2px #000;
-}
-
-        </code></pre>
-        <p class="firstletter">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, accusantium aspernatur reprehenderit in, doloribus nobis nisi quae tempora magni perspiciatis beatae!</p>
-
-    </section>
-
-    <section>
-        <h3>Pseudoelemento <span class="marker">::first-line</span></h3>
-        <p style="text-align: center">
-            Seleccionan únicamente la primera línea de un elemento de bloque que contenga texto. Sólo tiene efecto en elementos con su propiedad "display" en: block, inline-block, table-cell o table-caption.
-        </p>
-        <pre><code data-trim contenteditable>
-/* Destacamos sólo la primera línea */
-p::first-line {
-    color: #D5C70F;
-    font-size: 1.2em;
-    line-height: 1.2;
-    text-shadow: 2px 2px 2px #000;
-}
-
-        </code></pre>
-        <p class="firstline">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, accusantium aspernatur reprehenderit in, doloribus nobis nisi quae tempora magni perspiciatis beatae!</p>
-
-    </section>
-
-    <section>
-        <h3>Pseudoelemento <span class="marker">::selection</span></h3>
-        <p style="text-align: center">
-            Se aplica únicamente a la parte de texto que ha sido seleccionada por el usuario con el mouse mediante pulsar y arrastrar.
-        </p>
-        <pre><code data-trim contenteditable>
-/* Texto destacado */
-p::selection {
-    color: #D5C70F;
-    background: transparent;
-    text-shadow: 2px 2px 2px #000;
-}
-
-        </code></pre>
-        <p class="selection">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, accusantium aspernatur reprehenderit in, doloribus nobis nisi quae tempora magni perspiciatis beatae!</p>
-
-        <small class="marker">Este selector ha sido eliminado de la especificación CSS3 pero de momento los navegadores siguen dándole soporte.</small>
-
-    </section>
-
-    <section>
-        <h3>Pseudoelemento <span class="marker">::backdrop</span></h3>
-        <p style="text-align: center">
-            Se aplica únicamente cuando utilizamos la vista de navegador a pantalla completa.<br />
-            Este pseudoelemento se usa junto a la pseudoclase :fullscreen.
-        </p>
-        <pre><code data-trim contenteditable>
-/* Backdrop con un contenido fullscreen */
-*:fullscreen::backdrop {
-  position:fixed;
-  top:0; right:0; bottom:0; left:0;
-  background:black;
-}
-iframe:fullscreen {
-  /* Añadimos los estilos del contenido que queremos ver a pantalla completa */
-}
-
-        </code></pre>
-        
-        <p style="text-align: center"><a href="https://developer.mozilla.org/samples/domref/fullscreen.html" target="_blank">ver ejemplo</a></p>
-
-    </section>
-
-    <section>
-        <h3>Index of standard pseudo-elements</h3>
-        <p style="text-align: center">
-            En Mozilla Developer Network podemos consultar el listado completo de pseudoelementos soportados actualmente. <br />
-            Es necesario consultar la compatibilidad de cada uno en los diferentes navegadores web.
-        </p>
-        <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-elements" target="_blank"><img src="./img/slides/css-pseudoclasses/indexOfPseudoelements.png" alt=""></a>
-    </section>
-
 </section>
 
-<section>
-  <h2 style="text-align: center;">¡Gracias!</strong></h2>
-  <p style="text-align: center;">Preguntas, dudas, comentarios a <a href="mailto:hola@nahuelsotelo.com" style="display: block;">hola@nahuelsotelo.com</a></p>
 
-  <ul class="social">
-    <li><a href="https://github.com/nahuelsotelo" class="is--github">nahuelsotelo</a></li>
-    <li><a href="https://es.linkedin.com/in/nahuelsotelo" class="is--linkedin">Nahuel Sotelo</a></li>
-    <li><a href="https://twitter.com/nahuelsotelo" class="is--twitter">@nahuelsotelo</a></li>
+<section id="bye">
+  <h2 class="ta-c">¡Gracias!</strong></h2>
+  <p class="ta-c">Preguntas, dudas, comentarios a <a href="mailto:hola@nahuelsotelo.com" style="display: block;">hola@nahuelsotelo.com</a></p>
+
+  <ul class="Social">
+    <li class="Social-item">
+      <a href="https://github.com/nahuelsotelo" class="Social-link Social-link--github">nahuelsotelo</a>
+    </li>
+
+    <li class="Social-item">
+      <a href="https://es.linkedin.com/in/nahuelsotelo" class="Social-link Social-link--linkedin">Nahuel Sotelo</a>
+    </li>
+
+    <li class="Social-item">
+      <a href="https://twitter.com/nahuelsotelo" class="Social-link Social-link--twitter">@nahuelsotelo</a>
+    </li>
   </ul>
 </section>
 

@@ -22,8 +22,8 @@
     }
 
     h1 > span {
-      display: block; 
-      font-size: .6em; 
+      display: block;
+      font-size: .6em;
     }
 
   // HELPERS
@@ -79,7 +79,7 @@
       &-0 {
         margin-bottom: 0 !important;
       }
-      
+
       &-xxs {
         margin-bottom: .25rem !important;
       }
@@ -88,7 +88,7 @@
         margin-bottom: .5rem !important;
       }
 
-      &-xs {
+      &-s {
         margin-bottom: .75rem !important;
       }
 
@@ -136,7 +136,7 @@
   // --------------------------------------------------------
     .u-highlighted {
       background-color: rgba($c-blue, .4);
-      
+
       .u-highlighted {
         background-color: rgba($c-blue, .5);
       }

@@ -23,22 +23,29 @@ lesson_title: 'Introducción al CSS'
 <section>
     <h1>Selectores</h1>
 </section>
-
 {% include css-selectors-intro.html %}
 {% include css-selectors-basics.html %}
 {% include css-selectors-combine.html %}
 {% include css-pseudoclasses.html %}
-
+{% include css-specificity.html %}
 
 {% include css-pseudoelementos.html %}
 
-<section>
-  <h2 style="text-align: center;">¡Gracias!</strong></h2>
-  <p style="text-align: center;">Preguntas, dudas, comentarios a <a href="mailto:hola@nahuelsotelo.com" style="display: block;">hola@nahuelsotelo.com</a></p>
+<section id="bye">
+  <h2 class="ta-c">¡Gracias!</strong></h2>
+  <p class="ta-c">Preguntas, dudas, comentarios a <a href="mailto:hola@nahuelsotelo.com" style="display: block;">hola@nahuelsotelo.com</a></p>
 
-  <ul class="social">
-    <li><a href="https://github.com/nahuelsotelo" class="is--github">nahuelsotelo</a></li>
-    <li><a href="https://es.linkedin.com/in/nahuelsotelo" class="is--linkedin">Nahuel Sotelo</a></li>
-    <li><a href="https://twitter.com/nahuelsotelo" class="is--twitter">@nahuelsotelo</a></li>
+  <ul class="Social">
+    <li class="Social-item">
+      <a href="https://github.com/nahuelsotelo" class="Social-link Social-link--github">nahuelsotelo</a>
+    </li>
+
+    <li class="Social-item">
+      <a href="https://es.linkedin.com/in/nahuelsotelo" class="Social-link Social-link--linkedin">Nahuel Sotelo</a>
+    </li>
+
+    <li class="Social-item">
+      <a href="https://twitter.com/nahuelsotelo" class="Social-link Social-link--twitter">@nahuelsotelo</a>
+    </li>
   </ul>
 </section>

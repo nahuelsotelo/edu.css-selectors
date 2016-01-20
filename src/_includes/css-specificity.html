@@ -1,0 +1,90 @@
+<section id="specificity">
+    <section>
+        <h2>Especificidad (specificity)</h2>
+    </section>
+
+    <section>
+        <p>En CSS, la <span class="u-marked">especificidad</span>, es lo que determina que estilo será el que acabará aplicandose a un elemento determinado.</p>
+        <p>Cuando a un elemento se le aplica <span class="u-marked">más de un selector con reglas que actúan sobre la misma propiedad</span>, es la especificidad la encargada de resolver este conflicto.</p>
+    </section>
+
+    <section>
+        <p>A grandes rasgos podemos ordenar los diferentes tipos de selectores de menor a mayor peso específico de la siguiente manera:</p>
+        <ol>
+            <li>Selectores de elemento</li>
+            <li>Selectores contextuales</li>
+            <li>Clases</li>
+            <li>IDs</li>
+        </ol>
+    </section>
+
+    <section>
+        <h3>Calcular especificidad</h3>
+    </section>
+
+    <section>
+        <p class="specificity">
+            <span class="specificity-item specificity-item--inline">0</span>,<span class="specificity-item specificity-item--id">0</span>,<span class="specificity-item specificity-item--class">0</span>,<span class="specificity-item specificity-item--element">0</span>
+        </p>
+    </section>
+
+    <section>
+        <pre class="specificity-example">
+<span class="c-blue">p</span> {
+    color: red;
+}</pre>
+        <hr>
+        <p class="specificity"><span class="specificity-item specificity-item--inline">0</span>,<span class="specificity-item specificity-item--id">0</span>,<span class="specificity-item specificity-item--class">0</span>,<span class="specificity-item specificity-item--element">1</span></p>
+    </section>
+
+    <section>
+        <pre class="specificity-example">
+<span class="c-green">.text</span> {
+    color: red;
+}</pre>
+        <hr>
+        <p class="specificity"><span class="specificity-item specificity-item--inline">0</span>,<span class="specificity-item specificity-item--id">0</span>,<span class="specificity-item specificity-item--class">1</span>,<span class="specificity-item specificity-item--element">0</span></p>
+    </section>
+
+    <section>
+        <pre class="specificity-example">
+<span class="c-purple">#main</span> <span class="c-blue">strong</span> {
+    color: red;
+}</pre>
+        <hr>
+        <p class="specificity"><span class="specificity-item specificity-item--inline">0</span>,<span class="specificity-item specificity-item--id">1</span>,<span class="specificity-item specificity-item--class">0</span>,<span class="specificity-item specificity-item--element">1</span></p>
+    </section>
+
+    <section>
+        <pre class="specificity-example" style="font-size: 1.9rem;">
+<span class="c-blue">header</span> <span class="c-blue">ul</span><span class=c-purple>#main-nav</span> <span class="c-green">.sub-menu</span> <span class="c-blue">li</span><span class="c-green">.child</span> <span class="c-blue">a</span><span class="c-green">:hover</span> {
+    color: red;
+}</pre>
+        <hr>
+        <p class="specificity"><span class="specificity-item specificity-item--inline">0</span>,<span class="specificity-item specificity-item--id">1</span>,<span class="specificity-item specificity-item--class">3</span>,<span class="specificity-item specificity-item--element">4</span></p>
+    </section>
+
+    <section>
+        <pre class="specificity-example" style="font-size: 2rem;">
+&#60;p <span class="c-red">style="color: red"</span>&#62;Lorem ipsum dolor sit amet, consectetur adipisicing elit.&#60;/p&#62;</pre>
+        <hr>
+        <p class="specificity"><span class="specificity-item specificity-item--inline">1</span>,<span class="specificity-item specificity-item--id">0</span>,<span class="specificity-item specificity-item--class">0</span>,<span class="specificity-item specificity-item--element">0</span></p>
+    </section>
+
+    <section>
+        <pre class="specificity-example">
+<span class="c-blue">p</span> {
+    color: red <span style="color: red";>!important</span>;
+}</pre>
+        <hr>
+        <p class="specificity specificity-important fragment">
+            <span class="specificity-importantWrap">
+                <span class="specificity-item specificity-item--inline">0</span>,<span class="specificity-item specificity-item--id">0</span>,<span class="specificity-item specificity-item--class">0</span>,<span class="specificity-item specificity-item--element">1</span>
+            </span>
+
+            <span class="specificity-importantWrap">
+                <span class="specificity-item c-red">0</span>,<span class="specificity-item specificity-item--id">0</span>,<span class="specificity-item specificity-item--class">0</span>,<span class="specificity-item specificity-item--element">0</span>
+            </span>
+        </p>
+    </section>
+</section>

@@ -19,7 +19,7 @@
     </section>
 
     <section>
-        <div class="BoxModelGraphic-margin">
+        <div class="BoxModelGraphic-margin mb-m">
             <div class="BoxModelGraphic-padding">
                 <span class="BoxModelGraphic-content" contenteditable>contenido</span>
             </div>
@@ -39,8 +39,8 @@
 
     <section>
         <p>Por defecto <strong>el navegador añade los paddings y los bordes a las dimensiones del elemento</strong></p>
-        
-        <div class="BoxModelGraphic-padding">
+
+        <div class="BoxModelGraphic-padding mb-m">
             <span  class="BoxModelGraphic-content" contenteditable>contenido</span>
         </div>
         <p class="BoxModelGraphic-legend ta-c fz-xxs"><span class="c-purple">300px</span> + <span class="c-yellow">50px * 2</span> + <span class="c-red">5px * 2</span> = <span class="fz-xs">410px</span></p>
@@ -65,7 +65,7 @@
             <li><em><code>border-box</code></em>: Incluye <code>padding</code> y <code>border</code> dentro de las dimensiones.</li>
         </ul>
     </section>
-    
+
     <section>
         <p>Es una buena idea, sobre todo si trabajamos con una layout flexible (en porcentajes) declarar <em><code>box-sizing: border-box</code></em> para todos los elementos usando el selector universal (<code>*</code>).</p>
 <pre><code data-trim contenteditable>*,
