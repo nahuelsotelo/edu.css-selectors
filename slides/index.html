@@ -73,11 +73,12 @@
         <li>Borders</li>
       </ul>
     </li>
+
     <li>
       Selectores
       <ul>
-        <li>Conceptos básicos</li>
         <li>Selectores básicos</li>
+        <li>Herencia y Cascada</li>
         <li>Combinando selectores</li>
         <li>Pseudo-clases (pseudo-classes)</li>
         <li>Especificidad (specificity)</li>
@@ -393,9 +394,10 @@ p {
         </div>
     </section>
 
-    <section>
+    <section class="fz-s">
         <h3>Margin</h3>
         <p>El <code>margin</code> es el espacio exterior que separa el al elemento del resto de los elementos.</p>
+        <p>Hay que tener en cuenta que, al aplicar márgenes a dos elementos adyacentes el resultado puede no ser el deseado. Esto se debe a un comportamiento de los márgenes conocido como <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Mastering_margin_collapsing"><i>margin collapsing</i></a></p>
         <hr>
         <div class="BoxModelGraphic-margin">
             <div class="BoxModelGraphic-padding bg-grayLighter bdc-gray">
@@ -514,23 +516,28 @@ p {
       <br>
       <a href="http://www.atozcss.com/the-css-box-model/" style="font-size: .8em;">http://www.atozcss.com/the-css-box-model/</a>
     </li>
+
     <li style="margin-bottom: .8em;">
       <strong>* { Box-sizing: Border-box } FTW</strong> <i style="color: #999;"> &mdash; Paul Irish</i>
       <br>
       <a href="http://www.paulirish.com/2012/box-sizing-border-box-ftw/" style="font-size: .8em;">http://www.paulirish.com/2012/box-sizing-border-box-ftw/</a>
     </li>
+
     <li style="margin-bottom: .8em;">
       <strong>Hiding content for accessibility</strong> <i style="color: #999;"> &mdash; Jonathan Snook</i><br>
       <a href="http://snook.ca/archives/html_and_css/hiding-content-for-accessibility" style="font-size: .8em;">http://snook.ca/archives/html_and_css/hiding-content-for-accessibility</a>
     </li>
+
+    <li style="margin-bottom: .8em;">
+      <strong>What You Should Know About Collapsing Margins</strong> <i style="color: #999;"> &mdash; Geoff Graham</i>
+      <br>
+      <a href="https://css-tricks.com/what-you-should-know-about-collapsing-margins/" style="font-size: .8em;">https://css-tricks.com/what-you-should-know-about-collapsing-margins/</a>
+    </li>
+
     <li style="margin-bottom: .8em;">
       <strong>Single-direction margin declarations</strong> <i style="color: #999;"> &mdash; Harry Roberts</i>
       <br>
       <a href="http://csswizardry.com/2012/06/single-direction-margin-declarations/" style="font-size: .8em;">http://csswizardry.com/2012/06/single-direction-margin-declarations/</a>
-    </li>
-    <li style="margin-bottom: .8em;">
-      <strong>The Shapes of CSS</strong> <i style="color: #999;"> &mdash; CSS Tricks</i><br>
-      <a href="http://css-tricks.com/examples/ShapesOfCSS/" style="font-size: .8em;">http://css-tricks.com/examples/ShapesOfCSS/</a>
     </li>
   </ul>
 </section>
@@ -540,11 +547,10 @@ p {
 </section>
 <section>
   <section>
-    <h2>Conceptos Básicos</h2>
+    <h2>Selectores básicos</h2>
   </section>
 
   <section>
-    <h3>Componentes de CSS</h3>
     <p>Una regla CSS se compone de dos partes:</p>
     <ul>
       <li>Un <span class="c-green">selector</span>, que indica el elemento o elementos que queremos estilar.</li>
@@ -557,67 +563,6 @@ p {
     font-weight: bold;</span>
   }
     </pre>
-  </section>
-
-  <section class="fz-s">
-      <h3>Herencia</h3>
-      <p>Los elementos HTML heredarán algunos estilos de sus elementos contenedores (parent elements), mientras no declaremos otros más específicos.</p>
-      
-
-      <p><b>No todas las propiedades CSS son hereditarias.</b> A grandes rasgos podemos asumir que aquellas referentes a estilos de texto se heredarán pero las pertenecientes al box model no.</p>
-  </section>
-
-  <section>
-    <pre><code data-trim class="hljs html" contenteditable>
-<p>Lorem ipsum sit amet, <strong>consectetur</strong> adipisicing
-elit. <em>Consequatur</em> quidem unde vel ullam, tempora
-perferendis facilis.</p>
-    </code></pre>
-    
-    <pre><code data-trim class="hljs css" contenteditable>
-p {
-  color: red;
-}
-
-strong {
-  color: blue;
-}
-    </code></pre>
-    <hr>
-    <p class="c-red">Lorem ipsum sit amet, <strong class="c-blue">consectetur</strong> adipisicing elit. <em>Consequatur</em> quidem unde vel ullam, tempora perferendis facilis.</p>
-  </section>
-
-  <section>
-    <h3>Cascada</h3>
-    <p>La "<i>cascada</i>" a la que hace referencia la C de CSS explica la manera en la que el lenguaje resuelve los conflictos entre selectores.</p>
-    <p>El cliente web lee los estilos desde la primera línea del documento de manera descendente. Por esta razón si un selector aplica una regla ya exisitente en ese selector esta sera sobreescrita (siempre y cuando la especificidad sea la misma).</p>
-  </section>
-
-  <section>
-    <pre><code data-trim class="hljs html" contenteditable>
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio
-accusamus laborum temporibus itaque quos, ipsum, est sit ipsa, soluta
-aliquam modi cum maiores neque facere nesciunt, sequi corrupti quam
-aspernatur.</p>
-    </code></pre>
-    <pre><code data-trim class="hljs css" contenteditable>
-p {
-  color: red;
-}
-
-p {
-  color: blue;
-}
-    </code></pre>
-    
-    <hr>
-    <p class="c-blue">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio accusamus laborum temporibus itaque quos, ipsum, est sit ipsa, soluta aliquam modi cum maiores neque facere nesciunt, sequi corrupti quam aspernatur.</p>
-  </section>
-</section>
-
-<section>
-  <section>
-    <h2>Selectores básicos</h2>
   </section>
 
   <section>
@@ -679,6 +624,67 @@ p {
   </section>
 </section>
 
+
+<section>
+  <section>
+    <h2>Herencia y Cascada</h2>
+  </section>
+
+  <section class="fz-s">
+      <h3>Herencia</h3>
+      <p>Los elementos HTML heredarán algunos estilos de sus elementos contenedores (parent elements), mientras no declaremos otros más específicos.</p>
+
+
+      <p><b>No todas las propiedades CSS son hereditarias.</b> A grandes rasgos podemos asumir que aquellas referentes a estilos de texto se heredarán pero las pertenecientes al box model no.</p>
+  </section>
+
+  <section>
+    <pre><code data-trim class="hljs html" contenteditable>
+<p>Lorem ipsum sit amet, <strong>consectetur</strong> adipisicing
+elit. <em>Consequatur</em> quidem unde vel ullam, tempora
+perferendis facilis.</p>
+    </code></pre>
+
+    <pre><code data-trim class="hljs css" contenteditable>
+p {
+  color: red;
+}
+
+strong {
+  color: blue;
+}
+    </code></pre>
+    <hr>
+    <p class="c-red">Lorem ipsum sit amet, <strong class="c-blue">consectetur</strong> adipisicing elit. <em>Consequatur</em> quidem unde vel ullam, tempora perferendis facilis.</p>
+  </section>
+
+  <section>
+    <h3>Cascada</h3>
+    <p>La "<i>cascada</i>" a la que hace referencia la C de CSS explica la manera en la que el lenguaje resuelve los conflictos entre selectores.</p>
+    <p>El cliente web lee los estilos desde la primera línea del documento de manera descendente. Por esta razón si un selector aplica una regla ya exisitente en ese selector esta sera sobreescrita (siempre y cuando la especificidad sea la misma).</p>
+  </section>
+
+  <section>
+    <pre><code data-trim class="hljs html" contenteditable>
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio
+accusamus laborum temporibus itaque quos, ipsum, est sit ipsa, soluta
+aliquam modi cum maiores neque facere nesciunt, sequi corrupti quam
+aspernatur.</p>
+    </code></pre>
+    <pre><code data-trim class="hljs css" contenteditable>
+p {
+  color: red;
+}
+
+p {
+  color: blue;
+}
+    </code></pre>
+
+    <hr>
+    <p class="c-blue">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio accusamus laborum temporibus itaque quos, ipsum, est sit ipsa, soluta aliquam modi cum maiores neque facere nesciunt, sequi corrupti quam aspernatur.</p>
+  </section>
+</section>
 
 <section>
   <section>
